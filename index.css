@@ -351,7 +351,7 @@ nav a:hover {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
 }
 
-.feature-icon {
+.feature-icon img{
     height: 48px;
     margin-bottom: 16px;
 }
@@ -984,3 +984,4 @@ svg {
     padding: 0 2vw;
   }
 }
+
