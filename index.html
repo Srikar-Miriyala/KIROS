@@ -31,7 +31,7 @@
             border-color: #1e492e;
         } */
         /* Preloader styles */
-        .preloader {
+/*         .preloader {
             position: fixed;
             top: 0;
             left: 0;
@@ -54,7 +54,7 @@
         }
         @keyframes pulse {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
+            50% { transform: scale(1.2); } */
         }
     </style>
 </head>
@@ -352,18 +352,7 @@
     </footer>
 
     <script>
-        // Preloader
-        window.addEventListener('load', () => {
-    const preloader = document.querySelector('.preloader');
-    preloader.classList.add('hidden');
-});
-// Fallback after 5 seconds
-setTimeout(() => {
-    const preloader = document.querySelector('.preloader');
-    if (!preloader.classList.contains('hidden')) {
-        preloader.classList.add('hidden');
-    }
-}, 2000);
+
         // Custom Cursor
         const cursor = document.querySelector('.custom-cursor');
         document.addEventListener('mousemove', (e) => {
@@ -461,5 +450,6 @@ gsap.utils.toArray('.impact-number').forEach(numberEl => {
     </script>
 </body>
 </html>
+
 
 
