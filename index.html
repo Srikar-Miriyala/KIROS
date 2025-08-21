@@ -75,6 +75,7 @@
                 <ul>
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
+                    <li><a href="#Algae">Algae</a></li>
                     <li><a href="#technology">Technology</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -151,8 +152,8 @@
                         </svg>
                     </div>
                     <div class="impact-details">
-                        <h3 class="impact-number" data-target="2700">0</h3>
-                        <p class="impact-text">MWh of Clean Energy Generated Yearly</p>
+                        <h3 class="impact-number" data-target="8900">0</h3>
+                        <p class="impact-text">MWh of Clean Energy Generated Yearly ( 25 acre )</p>
                     </div>
                 </div>
                 <div class="impact-card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
@@ -162,7 +163,7 @@
                         </svg>
                     </div>
                     <div class="impact-details">
-                        <h3 class="impact-number" data-target="850">0</h3>
+                        <h3 class="impact-number" data-target="290">0</h3>
                         <p class="impact-text">Tons of CO₂ Saved Annually per Acre</p>
                     </div>
                 </div>
@@ -170,7 +171,7 @@
         </div>
     </section>
 
-    <section class="solutions-section algae-section fade-in-section">
+    <section class="solutions-section algae-section fade-in-section" id="Algae">
         <div class="container">
             <div class="solutions-tag">ALGAE</div>
             <h2>From nature to future: algae-powered sustainability</h2>
@@ -352,17 +353,12 @@
 
     <script>
         // Preloader
-       window.addEventListener('load', () => {
-    const preloader = document.querySelector('.preloader');
-    preloader.classList.add('hidden');
-});
-// Fallback after 5 seconds
-setTimeout(() => {
-    const preloader = document.querySelector('.preloader');
-    if (!preloader.classList.contains('hidden')) {
-        preloader.classList.add('hidden');
-    }
-}, 3000);
+        window.addEventListener('load', () => {
+            const preloader = document.querySelector('.preloader');
+            setTimeout(() => {
+                preloader.classList.add('hidden');
+            }, 1000);
+        });
 
         // Custom Cursor
         const cursor = document.querySelector('.custom-cursor');
@@ -426,34 +422,30 @@ setTimeout(() => {
             });
         });
 
-        // Impact Counter Animation
-        const impactSection = document.querySelector('.impact-section');
-        let hasAnimated = false;
-        const startShuffleCounter = (element) => {
-            const target = parseInt(element.getAttribute('data-target'), 10);
-            gsap.to(element, {
-                innerText: target,
-                duration: 2,
-                snap: { innerText: 1 },
-                ease: 'power1.out',
-                onUpdate: function() {
-                    element.textContent = Math.floor(this.targets()[0].innerText).toLocaleString();
-                }
-            });
-        };
-        gsap.utils.toArray('.impact-number').forEach(numberEl => {
-            ScrollTrigger.create({
-                trigger: impactSection,
-                start: 'top 70%',
-                onEnter: () => {
-                    if (!hasAnimated) {
-                        startShuffleCounter(numberEl);
-                        hasAnimated = true;
-                    }
-                }
-            });
-        });
+const impactSection = document.querySelector('.impact-section');
 
+gsap.utils.toArray('.impact-number').forEach(numberEl => {
+    let hasAnimated = false; // Local flag per element
+    ScrollTrigger.create({
+        trigger: impactSection,
+        start: 'top 70%',
+        onEnter: () => {
+            if (!hasAnimated) {
+                const target = parseInt(numberEl.getAttribute('data-target'), 10);
+                gsap.to(numberEl, {
+                    innerText: target,
+                    duration: 2,
+                    snap: { innerText: 1 },
+                    ease: 'power1.out',
+                    onUpdate: function() {
+                        numberEl.textContent = Math.floor(this.targets()[0].innerText).toLocaleString();
+                    }
+                });
+                hasAnimated = true; // Set flag after animation starts
+            }
+        }
+    });
+});
         // Initialize Vanilla Tilt
         VanillaTilt.init(document.querySelectorAll('[data-tilt]'), {
             max: 10,
@@ -465,5 +457,3 @@ setTimeout(() => {
     </script>
 </body>
 </html>
-
-
