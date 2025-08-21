@@ -1,1 +1,13 @@
 
+
+[build]
+  publish = "dist"  # Adjust to your publish directory if different
+  command = "npm run build"  # Your build command if applicable
+
+[[plugins]]
+  package = "netlify-plugin-image-optim"
+  [plugins.inputs]
+    # Optional: Specify input and output directories
+    outputDir = "assets/optimized"  # Where optimized images should go
+    # Optional: Exclude certain files or patterns
+    exclude = ["*.svg"]  # Exclude SVGs if they cause issues
