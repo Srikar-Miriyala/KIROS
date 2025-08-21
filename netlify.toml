@@ -1,0 +1,4 @@
+[[images]]
+  remote_images = ["https://kiros-energy.netlify.app/assets/*.png", "https://kiros-energy.netlify.app/assets/*.jpg"]
+  formats = ["auto"]
+  sizes = [320, 640, 1280]
