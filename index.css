@@ -5,6 +5,69 @@
     box-sizing: border-box;
 }
 
+/* Add to existing CSS or update */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fdfdfd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    transition: opacity 0.5s ease;
+}
+
+.preloader.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.preloader-logo {
+    width: 100px;
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+.spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #082618;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Mobile Optimizations */
+@media (max-width: 600px) {
+    .custom-cursor {
+        display: none; /* Disable custom cursor on mobile */
+    }
+    [data-tilt] {
+        transform: none !important; /* Disable tilt effects on mobile */
+    }
+    .parallax img {
+        transform: none !important; /* Disable parallax on mobile */
+    }
+    .features-grid, .impact-grid {
+        gap: 10px;
+    }
+    .feature-card, .impact-card {
+        padding: 10px;
+    }
+}
+
 @media (max-width: 600px) {
     [data-tilt] {
         transform: none !important;
@@ -1224,4 +1287,5 @@ footer {
         font-size: 14px;
     }
 }
+
 
