@@ -98,7 +98,7 @@
     </div>
 
     <div class="main-image-container parallax">
-        <img src="assets/solarfarms_cut.png" alt="">
+        <img src="https://blogger.googleusercontent.com/img/a/AVvXsEibWqLP4SQ97DHpgnEoO_WK0zyrhkZFz9azbGOhI3VjqYeAsZIaSdpxGYOOsSI-dvDbkWQVAt5aizixDckm2h_fVybK77HoRYHXrxPpUpusYwnxds1vJ01qN6s8yKsV8wJ_etUgwnVF-32isprFujptigRo-ge1jwtOM5t0M03p8yy3zdhUX-fwF433Ss39" alt="">
     </div>
 
     <section class="about-section fade-section" id="about">
@@ -176,7 +176,7 @@
             <div class="solutions-tag">ALGAE</div>
             <h2>From nature to future: algae-powered sustainability</h2>
             <div class="solutions-image">
-                <img src="/assets/algae.png" alt="A row of illuminated algae bioreactors in a modern facility">
+                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEg4ybe8Ia6cQzPrW1f0AaAq5pEj6Di8nbjySmsw12Q9D6Yn5YqdmS-rJ-yEVGeiR8-m2Hoke3ctWiLXe99e_0rayQcyeHap9RvgOzhJSHMyBdgBNSqnlNkR-O7Mk-bOuPyQC41mi89MTVZlRXsCukfaNNlxKXFkN2pSexp02laNkhu6cJYoFZNco8YAb1Av" alt="A row of illuminated algae bioreactors in a modern facility">
             </div>
         </div>
 
@@ -186,7 +186,7 @@
                 <h2 class="solution-headline">Transforming algae into sustainable solutions</h2>
                 <div class="solution-content-wrapper">
                     <div class="solution-image">
-                        <img src="/assets/chlorela.png" alt="Spirulina and Chlorella powder capsules">
+                        <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhMk4B38_CGNNLZajFkdPkMb4H6Gi3y4jQ3kb7TPEdKZKFB_G0oKTcc-N4bTyOumarlBPRGlpin8-yWQAQEvk7xn55wCqLVJn69jbzEV6-EKhXa8KOUN7S3VcaHE49Yfo4zhyNAFhqRPV1q83g8x4GkEo9jlnHyzW-yOIxdY9iv0U_SbdnoC4BxuDvT5wJn" alt="Spirulina and Chlorella powder capsules">
                     </div>
                     <div class="solution-details">
                         <div class="solution-number">01</div>
@@ -196,7 +196,7 @@
                 </div>
                 <div class="solution-content-wrapper">
                     <div class="solution-image">
-                        <img src="/assets/products.png" alt="Eco-friendly algae-based bioplastic products">
+                        <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhkeDgvzuxrsVC1a-3VbtH0XOC-vjcIsqwJz8qPjLrbPCjXt8H8vb4GtPXL4CTdQB3tMAMieTWo9msOF3NNq8AeYGfQSpOGo6Oeyk5qh2ovPb3Xd6o9e3P0rErqwZKfwRc2Sg1uTC-Ski-SSptW6DOUL9Qs5S1KhHu_HWEfZ4mhqYzf8PU617MIzbkr4lrR" alt="Eco-friendly algae-based bioplastic products">
                     </div>
                     <div class="solution-details">
                         <div class="solution-number">02</div>
@@ -206,7 +206,7 @@
                 </div>
                 <div class="solution-content-wrapper">
                     <div class="solution-image">
-                        <img src="/assets/plastic.png" alt="Algae breaking down conventional plastic waste">
+                        <img src="https://blogger.googleusercontent.com/img/a/AVvXsEibWqLP4SQ97DHpgnEoO_WK0zyrhkZFz9azbGOhI3VjqYeAsZIaSdpxGYOOsSI-dvDbkWQVAt5aizixDckm2h_fVybK77HoRYHXrxPpUpusYwnxds1vJ01qN6s8yKsV8wJ_etUgwnVF-32isprFujptigRo-ge1jwtOM5t0M03p8yy3zdhUX-fwF433Ss39" alt="Algae breaking down conventional plastic waste">
                     </div>
                     <div class="solution-details">
                         <div class="solution-number">03</div>
@@ -350,24 +350,15 @@
             </div>
         </div>
     </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" defer></script>
+
     <script>
+        // Preloader
         window.addEventListener('load', () => {
             const preloader = document.querySelector('.preloader');
-            preloader.classList.add('hidden');
-        });
-        setTimeout(() => {
-            const preloader = document.querySelector('.preloader');
-            if (!preloader.classList.contains('hidden')) {
+            setTimeout(() => {
                 preloader.classList.add('hidden');
-            }
-        }, 3000);
-        // Rest of your JavaScript
-    </script>
-    <script>
-       
+            }, 1000);
+        });
 
         // Custom Cursor
         const cursor = document.querySelector('.custom-cursor');
@@ -466,4 +457,3 @@ gsap.utils.toArray('.impact-number').forEach(numberEl => {
     </script>
 </body>
 </html>
-
