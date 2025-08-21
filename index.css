@@ -5,6 +5,18 @@
     box-sizing: border-box;
 }
 
+@media (max-width: 600px) {
+    [data-tilt] {
+        transform: none !important;
+    }
+    .parallax img {
+        transform: none !important;
+    }
+    .custom-cursor {
+        display: none; /* Remove custom cursor on mobile */
+    }
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -1212,3 +1224,4 @@ footer {
         font-size: 14px;
     }
 }
+
