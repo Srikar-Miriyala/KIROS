@@ -350,15 +350,24 @@
             </div>
         </div>
     </footer>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" defer></script>
     <script>
-        // Preloader
         window.addEventListener('load', () => {
             const preloader = document.querySelector('.preloader');
-            setTimeout(() => {
-                preloader.classList.add('hidden');
-            }, 1000);
+            preloader.classList.add('hidden');
         });
+        setTimeout(() => {
+            const preloader = document.querySelector('.preloader');
+            if (!preloader.classList.contains('hidden')) {
+                preloader.classList.add('hidden');
+            }
+        }, 3000);
+        // Rest of your JavaScript
+    </script>
+    <script>
+       
 
         // Custom Cursor
         const cursor = document.querySelector('.custom-cursor');
@@ -457,3 +466,4 @@ gsap.utils.toArray('.impact-number').forEach(numberEl => {
     </script>
 </body>
 </html>
+
