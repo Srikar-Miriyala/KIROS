@@ -8,11 +8,64 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- GSAP for advanced animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <!-- Vanilla Tilt.js for 3D tilt effects -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
     <style>
-
+        /* Custom cursor styles */
+        /* .custom-cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #082618;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s ease;
+        }
+        .custom-cursor.hovered {
+            transform: scale(1.5);
+            background: rgba(8, 38, 24, 0.2);
+            border-color: #1e492e;
+        } */
+        /* Preloader styles */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fdfdfd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            transition: opacity 0.5s ease;
+        }
+        .preloader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .preloader-logo {
+            width: 100px;
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
     </style>
 </head>
 <body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <img src="assets/logo_cut.png" alt="KIROS Logo" class="preloader-logo">
+    </div>
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+
     <div class="container">
         <header>
             <div class="logo">
@@ -23,7 +76,6 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#technology">Technology</a></li>
-                    <!-- <li><a href="#">Get Involved</a></li> -->
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -40,13 +92,12 @@
                 <p>Revolutionary <b>dual-layer technology</b> that generates clean energy while <b>capturing CO₂</b> through integrated solar farms and <b>algae bioreactors</b></p>
                 <p>Relax with an infinity pool, vibrant gardens, and private beach access for the ultimate seaside retreat.</p>
                 <a href="#about" class="btn btn-secondary">Know More</a>
-
             </div>
         </main>
     </div>
 
-    <div class="main-image-container">
-        <img src="assets/solarfarms_cut.png" alt="" >
+    <div class="main-image-container parallax">
+        <img src="assets/solarfarms_cut.png" alt="">
     </div>
 
     <section class="about-section fade-section" id="about">
@@ -90,10 +141,10 @@
         </div>
     </section>
 
-        <section class="impact-section fade-in-section">
+    <section class="impact-section fade-in-section">
         <div class="container">
             <div class="impact-grid">
-                <div class="impact-card">
+                <div class="impact-card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
                     <div class="impact-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
@@ -104,16 +155,62 @@
                         <p class="impact-text">MWh of Clean Energy Generated Yearly</p>
                     </div>
                 </div>
-
-                <div class="impact-card">
+                <div class="impact-card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
                     <div class="impact-icon">
-                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
                         </svg>
                     </div>
                     <div class="impact-details">
                         <h3 class="impact-number" data-target="850">0</h3>
                         <p class="impact-text">Tons of CO₂ Saved Annually per Acre</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="solutions-section algae-section fade-in-section">
+        <div class="container">
+            <div class="solutions-tag">ALGAE</div>
+            <h2>From nature to future: algae-powered sustainability</h2>
+            <div class="solutions-image">
+                <img src="/assets/algae.png" alt="A row of illuminated algae bioreactors in a modern facility">
+            </div>
+        </div>
+
+        <div class="custom-solution-section">
+            <div class="container1">
+                <div class="solution-tag">ALGAE INNOVATIONS</div>
+                <h2 class="solution-headline">Transforming algae into sustainable solutions</h2>
+                <div class="solution-content-wrapper">
+                    <div class="solution-image">
+                        <img src="/assets/chlorela.png" alt="Spirulina and Chlorella powder capsules">
+                    </div>
+                    <div class="solution-details">
+                        <div class="solution-number">01</div>
+                        <h3 class="solution-title">Nutraceuticals</h3>
+                        <p class="solution-description">Cultivating Spirulina and Chlorella to create nutrient-rich powders and capsules, supporting natural health with sustainable superfoods.</p>
+                    </div>
+                </div>
+                <div class="solution-content-wrapper">
+                    <div class="solution-image">
+                        <img src="/assets/products.png" alt="Eco-friendly algae-based bioplastic products">
+                    </div>
+                    <div class="solution-details">
+                        <div class="solution-number">02</div>
+                        <h3 class="solution-title">Bioplastics</h3>
+                        <p class="solution-description">Developing eco-friendly plastics from algae biomass, creating sustainable alternatives like bottles, plates, and glasses.</p>
+                    </div>
+                </div>
+                <div class="solution-content-wrapper">
+                    <div class="solution-image">
+                        <img src="/assets/plastic.png" alt="Algae breaking down conventional plastic waste">
+                    </div>
+                    <div class="solution-details">
+                        <div class="solution-number">03</div>
+                        <h3 class="solution-title">Plastic Decomposition</h3>
+                        <p class="solution-description">Exploring algae’s potential to break down conventional plastics, accelerating the shift toward a circular and green economy.</p>
                     </div>
                 </div>
             </div>
@@ -156,22 +253,22 @@
                 </div>
             </div>
             <div class="features-grid">
-                <div class="feature-card">
+                <div class="feature-card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
                     <img src="/assets/save-energy.svg" alt="Efficiency Icon" class="feature-icon">
                     <h4>50% Higher Efficiency</h4>
                     <p>Compared to traditional solar farms</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
                     <img src="/assets/carbon-dioxide-sensor.svg" alt="CO2 Reduction Icon" class="feature-icon">
                     <h4>80% CO₂ Reduction</h4>
                     <p>Active carbon capture technology</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
                     <img src="/assets/revenue (1).svg" alt="Dual Revenue Icon" class="feature-icon">
                     <h4>Dual Revenue</h4>
                     <p>Energy + carbon credits + biomass</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
                     <img src="/assets/business-graph.svg" alt="Scalable Design Icon" class="feature-icon">
                     <h4>Scalable Design</h4>
                     <p>Modular system for any scale</p>
@@ -180,35 +277,35 @@
         </div>
     </section>
 
-
-
     <section class="contact-section fade-section" id="contact">
         <div class="contact-container">
             <h2>Contact Us</h2>
             <p class="subtitle">Have a question or want to work together? Drop us a line below.</p>
-            <form action="https://formspree.io/f/yourFormId" method="POST">
-                <div class="form-row">
-                    <div class="input-group">
-                        <label for="name">Your Name</label>
-                        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
-                    </div>
-                    <div class="input-group">
-                        <label for="email">Email Address</label>
-                        <div class="input-with-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M22 6L12 13L2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                            <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+            <div class="form-wrapper">
+                <form action="https://formspree.io/f/yourFormId" method="POST">
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="email">Email Address</label>
+                            <div class="input-with-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M22 6L12 13L2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="input-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="5" placeholder="How can we help you?" required></textarea>
-                </div>
-                <button type="submit">Send Message</button>
-            </form>
+                    <div class="input-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" placeholder="How can we help you?" required></textarea>
+                    </div>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
             <p class="terms-text">
                 By submitting this form, you acknowledge that your information will be used in accordance with our <a href="#">Privacy Policy</a>.
             </p>
@@ -246,10 +343,7 @@
                     </nav>
                 </div>
                 <div class="footer-links-right">
-                    <a href="#">
-                        <!-- SVG... -->
-                        Help
-                    </a>
+                    <a href="#">Help</a>
                     <a href="#">Submit feedback</a>
                 </div>
             </div>
@@ -257,77 +351,112 @@
     </footer>
 
     <script>
-        const fadeSections = document.querySelectorAll('.fade-section');
-        const appearOnScroll = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.2 });
-
-        fadeSections.forEach(section => {
-            appearOnScroll.observe(section);
-        });
-    </script>
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // --- Fade-in animation ---
-        const sections = document.querySelectorAll('.fade-in-section');
-        const sectionObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    sectionObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-        sections.forEach(section => {
-            sectionObserver.observe(section);
+        // Preloader
+        window.addEventListener('load', () => {
+            const preloader = document.querySelector('.preloader');
+            setTimeout(() => {
+                preloader.classList.add('hidden');
+            }, 1000);
         });
 
-        // --- Motion Blur Shuffle Counter ---
+        // Custom Cursor
+        const cursor = document.querySelector('.custom-cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = `${e.clientX}px`;
+            cursor.style.top = `${e.clientY}px`;
+        });
+        document.querySelectorAll('a, button, .btn').forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
+        });
+
+        // GSAP Scroll Animations
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.utils.toArray('.fade-section').forEach(section => {
+            gsap.fromTo(section, 
+                { opacity: 0, y: 50 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: section,
+                        start: 'top 80%',
+                        toggleActions: 'play none none reverse'
+                    }
+                }
+            );
+        });
+
+        gsap.utils.toArray('.fade-in-section').forEach(section => {
+            gsap.fromTo(section, 
+                { opacity: 0, scale: 0.95 },
+                {
+                    opacity: 1,
+                    scale: 1,
+                    duration: 1.2,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: section,
+                        start: 'top 85%',
+                        toggleActions: 'play none none reverse'
+                    }
+                }
+            );
+        });
+
+        // Parallax Effect (only for main-image-container)
+        gsap.utils.toArray('.parallax').forEach(container => {
+            const img = container.querySelector('img');
+            gsap.to(img, {
+                yPercent: 20,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: container,
+                    scrub: true,
+                    start: 'top bottom',
+                    end: 'bottom top'
+                }
+            });
+        });
+
+        // Impact Counter Animation
         const impactSection = document.querySelector('.impact-section');
         let hasAnimated = false;
-
         const startShuffleCounter = (element) => {
             const target = parseInt(element.getAttribute('data-target'), 10);
-            const duration = 2000; // 2 seconds total duration
-            const shuffleInterval = 50; // Update every 50ms
-
-            let shuffleTimer = setInterval(() => {
-                const randomNumber = Math.floor(Math.random() * target * 1.2);
-                element.textContent = randomNumber.toLocaleString();
-                element.classList.add('shuffle'); // Add blur class
-                setTimeout(() => {
-                    element.classList.remove('shuffle'); // Remove blur class after a short delay
-                }, shuffleInterval * 0.6); // Shorter delay for the blur effect
-            }, shuffleInterval);
-
-            setTimeout(() => {
-                clearInterval(shuffleTimer);
-                element.textContent = target.toLocaleString();
-            }, duration);
-        };
-
-        const counterObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && !hasAnimated) {
-                    const numbers = entry.target.querySelectorAll('.impact-number');
-                    numbers.forEach(numberEl => startShuffleCounter(numberEl));
-                    hasAnimated = true;
-                    observer.unobserve(entry.target);
+            gsap.to(element, {
+                innerText: target,
+                duration: 2,
+                snap: { innerText: 1 },
+                ease: 'power1.out',
+                onUpdate: function() {
+                    element.textContent = Math.floor(this.targets()[0].innerText).toLocaleString();
                 }
             });
-        }, {
-            threshold: 0.5
+        };
+        gsap.utils.toArray('.impact-number').forEach(numberEl => {
+            ScrollTrigger.create({
+                trigger: impactSection,
+                start: 'top 70%',
+                onEnter: () => {
+                    if (!hasAnimated) {
+                        startShuffleCounter(numberEl);
+                        hasAnimated = true;
+                    }
+                }
+            });
         });
 
-        if (impactSection) {
-            counterObserver.observe(impactSection);
-        }
-    });
-</script>
+        // Initialize Vanilla Tilt
+        VanillaTilt.init(document.querySelectorAll('[data-tilt]'), {
+            max: 10,
+            speed: 400,
+            perspective: 1000,
+            glare: true,
+            'max-glare': 0.2
+        });
+    </script>
 </body>
 </html>
