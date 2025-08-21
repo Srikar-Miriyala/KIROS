@@ -60,16 +60,16 @@
 </head>
 <body>
     <!-- Preloader -->
-<!--     <div class="preloader">
+    <div class="preloader">
         <img src="assets/logo_cut.png" alt="KIROS Logo" class="preloader-logo">
-    </div> -->
+    </div>
     <!-- Custom Cursor -->
     <div class="custom-cursor"></div>
 
     <div class="container">
         <header>
             <div class="logo">
-                <img src="assets/logo_cut.png" loading="lazy" alt="" width="150" height="60">
+                <img src="assets/logo_cut.png" alt="" width="150" height="60">
             </div>
             <nav>
                 <ul>
@@ -90,14 +90,14 @@
             </div>
             <div class="hero-description">
                 <p>Revolutionary <b>dual-layer technology</b> that generates clean energy while <b>capturing CO₂</b> through integrated solar farms and <b>algae bioreactors</b></p>
-                <p>Relax with an infinity pool, vibrant gardens, and private beach access for the ultimate seaside retreat.</p>
+                <p>Experience sustainability at scale with vast solar farms, thriving algae chambers, and green landscapes working together</p>
                 <a href="#about" class="btn btn-secondary">Know More</a>
             </div>
         </main>
     </div>
 
     <div class="main-image-container parallax">
-        <img src="assets/solarfarms_cut.png" loading="lazy" alt="">
+        <img src="assets/solarfarms_cut.png" alt="">
     </div>
 
     <section class="about-section fade-section" id="about">
@@ -175,7 +175,7 @@
             <div class="solutions-tag">ALGAE</div>
             <h2>From nature to future: algae-powered sustainability</h2>
             <div class="solutions-image">
-                <img src="/assets/algae.png" loading="lazy" alt="A row of illuminated algae bioreactors in a modern facility">
+                <img src="/assets/algae.png" alt="A row of illuminated algae bioreactors in a modern facility">
             </div>
         </div>
 
@@ -185,7 +185,7 @@
                 <h2 class="solution-headline">Transforming algae into sustainable solutions</h2>
                 <div class="solution-content-wrapper">
                     <div class="solution-image">
-                        <img src="/assets/chlorela.png" loading="lazy" alt="Spirulina and Chlorella powder capsules">
+                        <img src="/assets/chlorela.png" alt="Spirulina and Chlorella powder capsules">
                     </div>
                     <div class="solution-details">
                         <div class="solution-number">01</div>
@@ -195,7 +195,7 @@
                 </div>
                 <div class="solution-content-wrapper">
                     <div class="solution-image">
-                        <img src="/assets/products.png" loading="lazy"alt="Eco-friendly algae-based bioplastic products">
+                        <img src="/assets/products.png" alt="Eco-friendly algae-based bioplastic products">
                     </div>
                     <div class="solution-details">
                         <div class="solution-number">02</div>
@@ -205,7 +205,7 @@
                 </div>
                 <div class="solution-content-wrapper">
                     <div class="solution-image">
-                        <img src="/assets/plastic.png" loading="lazy" alt="Algae breaking down conventional plastic waste">
+                        <img src="/assets/plastic.png" alt="Algae breaking down conventional plastic waste">
                     </div>
                     <div class="solution-details">
                         <div class="solution-number">03</div>
@@ -353,9 +353,11 @@
     <script>
         // Preloader
         window.addEventListener('load', () => {
-    const preloader = document.querySelector('.preloader');
-    preloader.classList.add('hidden');
-});
+            const preloader = document.querySelector('.preloader');
+            setTimeout(() => {
+                preloader.classList.add('hidden');
+            }, 1000);
+        });
 
         // Custom Cursor
         const cursor = document.querySelector('.custom-cursor');
@@ -458,6 +460,3 @@
     </script>
 </body>
 </html>
-
-
-
