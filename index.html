@@ -153,7 +153,7 @@
                     </div>
                     <div class="impact-details">
                         <h3 class="impact-number" data-target="8900">0</h3>
-                        <p class="impact-text">MWh of Clean Energy Generated Yearly ( 25 acre )</p>
+                        <p class="impact-text">MWh of Clean Energy Generated Yearly (25 acre)</p>
                     </div>
                 </div>
                 <div class="impact-card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
@@ -354,12 +354,16 @@
     <script>
         // Preloader
         window.addEventListener('load', () => {
-            const preloader = document.querySelector('.preloader');
-            setTimeout(() => {
-                preloader.classList.add('hidden');
-            }, 1000);
-        });
-
+    const preloader = document.querySelector('.preloader');
+    preloader.classList.add('hidden');
+});
+// Fallback after 5 seconds
+setTimeout(() => {
+    const preloader = document.querySelector('.preloader');
+    if (!preloader.classList.contains('hidden')) {
+        preloader.classList.add('hidden');
+    }
+}, 2000);
         // Custom Cursor
         const cursor = document.querySelector('.custom-cursor');
         document.addEventListener('mousemove', (e) => {
@@ -457,3 +461,4 @@ gsap.utils.toArray('.impact-number').forEach(numberEl => {
     </script>
 </body>
 </html>
+
