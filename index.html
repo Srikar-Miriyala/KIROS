@@ -352,12 +352,17 @@
 
     <script>
         // Preloader
-        window.addEventListener('load', () => {
-            const preloader = document.querySelector('.preloader');
-            setTimeout(() => {
-                preloader.classList.add('hidden');
-            }, 1000);
-        });
+       window.addEventListener('load', () => {
+    const preloader = document.querySelector('.preloader');
+    preloader.classList.add('hidden');
+});
+// Fallback after 5 seconds
+setTimeout(() => {
+    const preloader = document.querySelector('.preloader');
+    if (!preloader.classList.contains('hidden')) {
+        preloader.classList.add('hidden');
+    }
+}, 5000);
 
         // Custom Cursor
         const cursor = document.querySelector('.custom-cursor');
@@ -460,3 +465,4 @@
     </script>
 </body>
 </html>
+
