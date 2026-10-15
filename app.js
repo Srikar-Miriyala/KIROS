@@ -95,27 +95,27 @@
     }
 
     // ──────────────────────────────────────────────
-    // NAVBAR
+    // FLOATING NAVBAR (Dynamic Island / Capsule Pill)
     // ──────────────────────────────────────────────
     const navbar = document.getElementById('navbar');
-    let lastScroll = 0;
-
     if (navbar) {
-        window.addEventListener('scroll', () => {
+        const updateNavbarScroll = () => {
             const currentScroll = window.scrollY;
-            if (currentScroll > 50) {
+            if (currentScroll > 40) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
             }
-            lastScroll = currentScroll;
-        }, { passive: true });
+        };
+        updateNavbarScroll();
+        window.addEventListener('scroll', updateNavbarScroll, { passive: true });
     }
 
     // Mobile Menu & Backdrop
     const hamburger = document.getElementById('navHamburger');
     const navMenu = document.getElementById('navMenu');
     const menuBackdrop = document.getElementById('menuBackdrop');
+    const navDrawerClose = document.getElementById('navDrawerClose');
 
     const closeMobileMenu = () => {
         if (hamburger) {
@@ -143,6 +143,10 @@
     if (hamburger) {
         hamburger.setAttribute('aria-expanded', 'false');
         hamburger.addEventListener('click', toggleMobileMenu);
+    }
+
+    if (navDrawerClose) {
+        navDrawerClose.addEventListener('click', closeMobileMenu);
     }
 
     if (menuBackdrop) {
@@ -223,30 +227,10 @@
     });
 
     // ──────────────────────────────────────────────
-    // MOBILE ACCORDION & MENU NAVIGATION
+    // MOBILE NAVIGATION DRAWER
     // ──────────────────────────────────────────────
-    navLinksData.forEach(link => {
-        link.addEventListener('click', (e) => {
-            if (window.innerWidth <= 1024) {
-                const subMenu = link.nextElementSibling;
-                if (subMenu && subMenu.classList.contains('mobile-sub-menu')) {
-                    e.preventDefault();
-                    const isOpen = subMenu.classList.contains('open');
-                    document.querySelectorAll('.mobile-sub-menu.open').forEach(menu => {
-                        menu.classList.remove('open');
-                    });
-                    if (!isOpen) {
-                        subMenu.classList.add('open');
-                    }
-                } else {
-                    closeMobileMenu();
-                }
-            }
-        });
-    });
-
-    // Close mobile drawer when clicking sub-menu links or action buttons
-    document.querySelectorAll('.mobile-sub-menu a, .nav-actions a').forEach(item => {
+    // On mobile, all items are direct links. Close drawer on navigation.
+    document.querySelectorAll('.nav-links a, .nav-actions a').forEach(item => {
         item.addEventListener('click', () => {
             if (window.innerWidth <= 1024) {
                 closeMobileMenu();
