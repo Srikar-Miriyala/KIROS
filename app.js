@@ -9,29 +9,73 @@
     let animationId = null;
 
     // ──────────────────────────────────────────────
-    // PRELOADER
+    // PRELOADER & SESSION MANAGEMENT
     // ──────────────────────────────────────────────
-    window.addEventListener('load', () => {
-        const preloader = document.getElementById('preloader');
-        if (!preloader) {
-            initAnimations();
-            return;
-        }
-        
-        if (sessionStorage.getItem('kiros_visited')) {
-            // Already visited in this session, hide immediately
+    let isVisited = false;
+    try {
+        isVisited = !!sessionStorage.getItem('kiros_visited');
+    } catch (e) {
+        isVisited = false;
+    }
+
+    const preloader = document.getElementById('preloader');
+
+    if (isVisited) {
+        // Internal page navigation within same session:
+        // Immediately suppress preloader without waiting for window.load
+        document.documentElement.classList.add('kiros-visited');
+        document.documentElement.style.setProperty('--preloader-display', 'none');
+        if (preloader) {
+            preloader.classList.add('hidden');
             preloader.style.display = 'none';
-            initAnimations();
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initAnimations, { once: true });
         } else {
-            // First visit, play animation
-            sessionStorage.setItem('kiros_visited', 'true');
+            initAnimations();
+        }
+    } else {
+        // Initial first visit of session:
+        const runFirstVisitPreloader = () => {
+            try {
+                sessionStorage.setItem('kiros_visited', 'true');
+            } catch (e) {}
+
             setTimeout(() => {
-                preloader.classList.add('hidden');
+                if (preloader) {
+                    preloader.classList.add('hidden');
+                }
                 setTimeout(() => {
-                    preloader.style.display = 'none';
+                    if (preloader) {
+                        preloader.style.display = 'none';
+                    }
+                    document.documentElement.classList.add('kiros-visited');
+                    initAnimations();
                 }, 500); // Wait for fade out
-                initAnimations();
             }, 1200);
+        };
+
+        if (document.readyState === 'complete') {
+            runFirstVisitPreloader();
+        } else {
+            window.addEventListener('load', runFirstVisitPreloader, { once: true });
+        }
+    }
+
+    // Handle browser Back/Forward navigation (bfcache)
+    window.addEventListener('pageshow', (event) => {
+        let visited = false;
+        try {
+            visited = !!sessionStorage.getItem('kiros_visited');
+        } catch (e) {}
+        if (visited) {
+            document.documentElement.classList.add('kiros-visited');
+            document.documentElement.style.setProperty('--preloader-display', 'none');
+            const p = document.getElementById('preloader');
+            if (p) {
+                p.classList.add('hidden');
+                p.style.display = 'none';
+            }
         }
     });
 

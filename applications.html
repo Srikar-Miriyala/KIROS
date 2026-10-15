@@ -11,6 +11,20 @@
         content="KIROS, carbon capture, algae bioreactor, solar energy, climate tech, deep tech startup">
     <meta name="theme-color" content="#0a1628">
 
+    <script>
+        (function () {
+            try {
+                if (sessionStorage.getItem('kiros_visited')) {
+                    document.documentElement.classList.add('kiros-visited');
+                    document.documentElement.style.setProperty('--preloader-display', 'none');
+                } else {
+                    document.documentElement.style.setProperty('--preloader-display', 'flex');
+                }
+            } catch (e) {}
+        })();
+    </script>
+
+
         <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
@@ -25,14 +39,6 @@
         <!-- GSAP -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-        <script>
-            // Prevent white flash on subsequent page loads
-            if (sessionStorage.getItem('kiros_visited')) {
-                document.documentElement.style.setProperty('--preloader-display', 'none');
-            } else {
-                document.documentElement.style.setProperty('--preloader-display', 'flex');
-            }
-        </script>
 </head>
 
 <body>
