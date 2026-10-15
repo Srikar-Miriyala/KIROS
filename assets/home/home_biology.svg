@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="1080" height="1080">
+    <defs>
+        <linearGradient id="bio-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#fdfdfd" />
+            <stop offset="100%" stop-color="#e6f2eb" />
+        </linearGradient>
+        <filter id="cell-glow">
+            <feGaussianBlur stdDeviation="40" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#bio-grad)" />
+    
+    <!-- Abstract Cellular structures -->
+    <g opacity="0.6" filter="url(#cell-glow)">
+        <circle cx="300" cy="300" r="250" fill="#d1e8da" />
+        <circle cx="800" cy="400" r="300" fill="#dbeadd" />
+        <circle cx="500" cy="800" r="350" fill="#e2f0e6" />
+        <circle cx="900" cy="900" r="200" fill="#e6f2eb" />
+    </g>
+    
+    <!-- Engineering Overlay -->
+    <g stroke="rgba(255,255,255,0.8)" stroke-width="1.5" fill="none" opacity="0.5">
+        <polygon points="300,100 500,200 400,400 200,300" />
+        <polygon points="800,200 1000,400 900,600 700,400" />
+        <polygon points="400,600 700,700 600,1000 300,900" />
+    </g>
+    
+    <g fill="#ffffff" opacity="0.9">
+        <circle cx="300" cy="100" r="4" />
+        <circle cx="500" cy="200" r="4" />
+        <circle cx="400" cy="400" r="4" />
+        <circle cx="200" cy="300" r="4" />
+        
+        <circle cx="800" cy="200" r="4" />
+        <circle cx="1000" cy="400" r="4" />
+        <circle cx="900" cy="600" r="4" />
+        <circle cx="700" cy="400" r="4" />
+    </g>
+</svg>

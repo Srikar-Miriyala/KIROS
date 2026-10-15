@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+    <defs>
+        <radialGradient id="bg" cx="50%" cy="50%" r="70%">
+            <stop offset="0%" stop-color="#1A202C" />
+            <stop offset="100%" stop-color="#0D1117" />
+        </radialGradient>
+        <filter id="glow">
+            <feGaussianBlur stdDeviation="8" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+        <filter id="bright-glow">
+            <feGaussianBlur stdDeviation="15" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+    </defs>
+    
+    <rect width="100%" height="100%" fill="url(#bg)" />
+    
+    <!-- Isometric Perspective Transform -->
+    <g transform="translate(960, 540) scale(1, 0.5) rotate(45)">
+        
+        <!-- Base Grid -->
+        <g stroke="rgba(255,255,255,0.05)" stroke-width="2">
+            <!-- generate grid 2000x2000 -->
+            <rect x="-1000" y="-1000" width="2000" height="2000" fill="none" />
+            <!-- Inner grid lines omitted for brevity, represented abstractly -->
+            <path d="M -1000 -600 L 1000 -600 M -1000 -200 L 1000 -200 M -1000 200 L 1000 200 M -1000 600 L 1000 600" />
+            <path d="M -600 -1000 L -600 1000 M -200 -1000 L -200 1000 M 200 -1000 L 200 1000 M 600 -1000 L 600 1000" />
+        </g>
+        
+        <!-- Connected Network of Modules -->
+        <g stroke="#38A169" stroke-width="4" filter="url(#glow)">
+            <line x1="-200" y1="-200" x2="200" y2="-200" />
+            <line x1="-200" y1="200" x2="200" y2="200" />
+            <line x1="-200" y1="-200" x2="-200" y2="200" />
+            <line x1="200" y1="-200" x2="200" y2="200" />
+            
+            <line x1="200" y1="-200" x2="600" y2="-200" />
+            <line x1="-200" y1="200" x2="-200" y2="600" />
+        </g>
+        
+        <!-- Glowing Nodes -->
+        <g fill="#48BB78" filter="url(#bright-glow)">
+            <circle cx="-200" cy="-200" r="30" />
+            <circle cx="200" cy="-200" r="30" />
+            <circle cx="-200" cy="200" r="30" />
+            <circle cx="200" cy="200" r="40" fill="#68D391" /> <!-- Primary node -->
+            
+            <circle cx="600" cy="-200" r="25" />
+            <circle cx="-200" cy="600" r="25" />
+        </g>
+        
+        <!-- Architecture footprints -->
+        <g fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)" stroke-width="2">
+            <rect x="150" y="150" width="100" height="100" />
+            <rect x="-250" y="-250" width="100" height="100" />
+        </g>
+        
+    </g>
+    
+</svg>

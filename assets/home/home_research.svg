@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+    <defs>
+        <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#090A0F" />
+            <stop offset="100%" stop-color="#141E30" />
+        </linearGradient>
+        <radialGradient id="cell-glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#38A169" stop-opacity="0.8"/>
+            <stop offset="50%" stop-color="#3182CE" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#141E30" stop-opacity="0"/>
+        </radialGradient>
+        <filter id="dof-blur">
+            <feGaussianBlur stdDeviation="12" />
+        </filter>
+        <filter id="dof-blur-heavy">
+            <feGaussianBlur stdDeviation="24" />
+        </filter>
+    </defs>
+    
+    <rect width="100%" height="100%" fill="url(#bg)" />
+    
+    <!-- Heavy blurred background elements -->
+    <circle cx="400" cy="300" r="300" fill="url(#cell-glow)" filter="url(#dof-blur-heavy)" opacity="0.6" />
+    <circle cx="1500" cy="800" r="400" fill="url(#cell-glow)" filter="url(#dof-blur-heavy)" opacity="0.4" />
+    
+    <!-- Microscopic cellular structures (in focus) -->
+    <g stroke="rgba(72,187,120,0.8)" stroke-width="3" fill="rgba(72,187,120,0.1)">
+        <polygon points="900,400 1000,350 1100,400 1100,500 1000,550 900,500" />
+        <polygon points="1000,550 1100,500 1200,550 1200,650 1100,700 1000,650" />
+        <polygon points="800,550 900,500 1000,550 1000,650 900,700 800,650" />
+        <polygon points="900,700 1000,650 1100,700 1100,800 1000,850 900,800" />
+    </g>
+    
+    <g fill="#48BB78">
+        <circle cx="1000" cy="450" r="15" />
+        <circle cx="1100" cy="600" r="20" />
+        <circle cx="900" cy="600" r="10" />
+        <circle cx="1000" cy="750" r="25" />
+    </g>
+    
+    <!-- Slightly blurred foreground elements -->
+    <g stroke="rgba(49,130,206,0.6)" stroke-width="6" fill="none" filter="url(#dof-blur)">
+        <circle cx="600" cy="800" r="150" />
+        <circle cx="1400" cy="300" r="100" />
+    </g>
+    
+    <!-- Data overlay -->
+    <g fill="#ffffff" font-family="monospace" font-size="14" opacity="0.5">
+        <text x="200" y="200">ANALYSIS: BIO_YIELD_0.84</text>
+        <text x="200" y="230">PHOTON_FLUX: OPTIMAL</text>
+        <text x="200" y="260">CO2_UPTAKE: 42.1g/L/d</text>
+        
+        <rect x="200" y="300" width="200" height="2" fill="#ffffff" opacity="0.2" />
+        <rect x="200" y="300" width="140" height="2" fill="#48BB78" />
+        
+        <rect x="200" y="320" width="200" height="2" fill="#ffffff" opacity="0.2" />
+        <rect x="200" y="320" width="180" height="2" fill="#3182CE" />
+    </g>
+</svg>

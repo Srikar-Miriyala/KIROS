@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+    <defs>
+        <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#1A202C" />
+            <stop offset="100%" stop-color="#2D3748" />
+        </linearGradient>
+        <radialGradient id="node-glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#38A169" stop-opacity="1"/>
+            <stop offset="100%" stop-color="#38A169" stop-opacity="0"/>
+        </radialGradient>
+        <filter id="heavy-blur">
+            <feGaussianBlur stdDeviation="50" />
+        </filter>
+        <filter id="soft-glow">
+            <feGaussianBlur stdDeviation="15" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+    </defs>
+    
+    <rect width="100%" height="100%" fill="url(#bg)" />
+    <circle cx="960" cy="540" r="400" fill="url(#node-glow)" filter="url(#heavy-blur)" opacity="0.4" />
+    
+    <!-- Data rings -->
+    <circle cx="960" cy="540" r="300" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+    <circle cx="960" cy="540" r="450" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="4" stroke-dasharray="10 20" />
+    <circle cx="960" cy="540" r="600" fill="none" stroke="rgba(56,161,105,0.2)" stroke-width="1" stroke-dasharray="5 5" />
+    
+    <!-- Connections -->
+    <path d="M 460 540 L 1460 540" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2" />
+    <path d="M 960 140 L 960 940" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2" />
+    <path d="M 606 186 L 1313 893" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+    <path d="M 1313 186 L 606 893" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+    
+    <!-- Central Node -->
+    <circle cx="960" cy="540" r="100" fill="#2F855A" filter="url(#soft-glow)" />
+    <circle cx="960" cy="540" r="60" fill="#48BB78" />
+    
+    <!-- Surrounding Nodes -->
+    <g filter="url(#soft-glow)">
+        <circle cx="460" cy="540" r="40" fill="#ECC94B" /> <!-- Solar -->
+        <circle cx="960" cy="140" r="40" fill="#E2E8F0" /> <!-- CO2 -->
+        <circle cx="1460" cy="540" r="40" fill="#3182CE" /> <!-- Water -->
+        <circle cx="960" cy="940" r="40" fill="#805AD5" /> <!-- Monitoring -->
+    </g>
+    
+    <!-- Floating particles -->
+    <g fill="#ffffff" opacity="0.6">
+        <circle cx="700" cy="540" r="4" />
+        <circle cx="1200" cy="540" r="4" />
+        <circle cx="960" cy="340" r="4" />
+        <circle cx="960" cy="740" r="4" />
+    </g>
+</svg>

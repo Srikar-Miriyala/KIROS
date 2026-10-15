@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+    <defs>
+        <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#E2E8F0" />
+            <stop offset="100%" stop-color="#CBD5E0" />
+        </linearGradient>
+        <linearGradient id="glass" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="rgba(255,255,255,0.9)" />
+            <stop offset="20%" stop-color="rgba(255,255,255,0.2)" />
+            <stop offset="80%" stop-color="rgba(255,255,255,0.2)" />
+            <stop offset="100%" stop-color="rgba(255,255,255,0.7)" />
+        </linearGradient>
+        <linearGradient id="algae-core" x1="0%" y1="100%" x2="0%" y2="0%">
+            <stop offset="0%" stop-color="#1C4532" />
+            <stop offset="60%" stop-color="#2F855A" />
+            <stop offset="100%" stop-color="#68D391" />
+        </linearGradient>
+        <filter id="shadow">
+            <feDropShadow dx="0" dy="40" stdDeviation="30" flood-opacity="0.2" />
+        </filter>
+        <filter id="glass-blur">
+            <feGaussianBlur stdDeviation="4" />
+        </filter>
+    </defs>
+    
+    <rect width="100%" height="100%" fill="url(#bg)" />
+    
+    <!-- Floor reflection / shadow -->
+    <ellipse cx="960" cy="980" rx="300" ry="30" fill="rgba(0,0,0,0.15)" filter="url(#shadow)" />
+    <ellipse cx="960" cy="980" rx="150" ry="15" fill="rgba(0,0,0,0.3)" />
+    
+    <!-- Reactor Core Algae -->
+    <rect x="760" y="250" width="400" height="700" rx="200" fill="url(#algae-core)" />
+    
+    <!-- Bubble Columns -->
+    <g fill="rgba(255,255,255,0.4)" filter="url(#glass-blur)">
+        <path d="M 820 900 C 840 700, 800 500, 860 300" stroke="rgba(255,255,255,0.2)" stroke-width="40" fill="none" />
+        <path d="M 1100 900 C 1080 700, 1120 500, 1060 300" stroke="rgba(255,255,255,0.1)" stroke-width="60" fill="none" />
+    </g>
+    
+    <!-- Bubbles -->
+    <g fill="#ffffff" opacity="0.8">
+        <circle cx="850" cy="800" r="8" />
+        <circle cx="890" cy="700" r="12" />
+        <circle cx="950" cy="600" r="15" />
+        <circle cx="1020" cy="850" r="10" />
+        <circle cx="1080" cy="500" r="14" />
+        <circle cx="980" cy="350" r="12" />
+    </g>
+    
+    <!-- Outer Glass Tube -->
+    <rect x="740" y="200" width="440" height="750" rx="220" fill="url(#glass)" stroke="#ffffff" stroke-width="4" filter="url(#shadow)" />
+    
+    <!-- Engineered Metal Base -->
+    <rect x="700" y="880" width="520" height="100" rx="50" fill="#4A5568" />
+    <rect x="720" y="880" width="480" height="20" fill="#2D3748" />
+    <rect x="800" y="980" width="320" height="40" rx="20" fill="#2D3748" />
+    
+    <!-- Engineered Metal Top -->
+    <rect x="700" y="150" width="520" height="100" rx="50" fill="#4A5568" />
+    <rect x="720" y="230" width="480" height="20" fill="#2D3748" />
+    
+    <!-- Sensor Hardware -->
+    <rect x="1160" y="450" width="80" height="140" rx="10" fill="#2D3748" />
+    <circle cx="1200" cy="490" r="20" fill="#F6E05E" />
+    <path d="M 1180 500 L 1150 500" stroke="#1A202C" stroke-width="4" />
+    
+    <rect x="680" y="600" width="60" height="100" rx="10" fill="#2D3748" />
+    <circle cx="710" cy="650" r="15" fill="#E53E3E" />
+</svg>

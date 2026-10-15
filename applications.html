@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIROS | Applications — Industrial Integration</title>
+    <meta name="description"
+        content="KIROS is developing a next-generation solar-powered algae carbon capture platform that transforms industrial emissions into renewable energy, valuable biomass, and measurable environmental impact.">
+    <meta name="keywords"
+        content="KIROS, carbon capture, algae bioreactor, solar energy, climate tech, deep tech startup">
+    <meta name="theme-color" content="#0a1628">
+
+        <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="stylesheet" href="index.css?v=1.2">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+            rel="stylesheet">
+
+        <!-- GSAP -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+        <script>
+            // Prevent white flash on subsequent page loads
+            if (sessionStorage.getItem('kiros_visited')) {
+                document.documentElement.style.setProperty('--preloader-display', 'none');
+            } else {
+                document.documentElement.style.setProperty('--preloader-display', 'flex');
+            }
+        </script>
+</head>
+
+<body>
+
+    <!-- <div class="canvas-container">
+        <canvas class="global-canvas" id="heroCanvas"></canvas>
+    </div> -->
+
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <img src="assets/logo_cut.png" alt="KIROS" class="preloader-logo">
+        <div class="preloader-bar">
+            <div class="preloader-bar-fill"></div>
+        </div>
+    </div>
+    <!-- ═══════════════════════════════════════════════════════════
+         NAVIGATION
+         ═══════════════════════════════════════════════════════════ -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="nav-logo" aria-label="KIROS Home">
+                <img src="assets/logo_cut.png" alt="KIROS">
+            </a>
+            <div class="nav-menu" id="navMenu">
+                <div class="nav-links">
+                    <div class="nav-item">
+                        <a href="technology.html" class="nav-main-link" data-menu="menu-technology">Technology</a>
+                        <div class="mobile-sub-menu">
+                            <a href="technology.html#solar-energy">Solar Energy</a>
+                            <a href="technology.html#modular-bioreactor">Modular Bioreactor</a>
+                            <a href="technology.html#co2-integration">CO₂ Integration</a>
+                            <a href="technology.html#water-circulation">Water Circulation</a>
+                            <a href="technology.html#sensor-monitoring">Sensor & Monitoring</a>
+                            <a href="technology.html#automation">Automation</a>
+                            <img src="assets/mega-menu/technology.jpg" alt="Technology">
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <a href="how-it-works.html" class="nav-main-link" data-menu="menu-how-it-works">How It Works</a>
+                        <div class="mobile-sub-menu">
+                            <a href="how-it-works.html#solar-capture">Solar Energy Capture</a>
+                            <a href="how-it-works.html#co2-injection">CO₂ Injection</a>
+                            <a href="how-it-works.html#photosynthesis">Algae Photosynthesis</a>
+                            <a href="how-it-works.html#harvest">Biomass Harvest</a>
+                            <a href="how-it-works.html#outputs">System Outputs</a>
+                            <img src="assets/mega-menu/process.jpg" alt="Process">
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <a href="research.html" class="nav-main-link" data-menu="menu-research">Research</a>
+                        <div class="mobile-sub-menu">
+                            <a href="research.html#microalgae">Microalgae Research</a>
+                            <a href="research.html#bioreactor">Bioreactor Research</a>
+                            <a href="research.html#co2-utilization">CO₂ Utilization</a>
+                            <a href="research.html#solar-integration">Solar Integration</a>
+                            <a href="research.html#system-monitoring">System Monitoring</a>
+                            <a href="research.html#prototype-validation">Prototype Validation</a>
+                            <img src="assets/mega-menu/research.jpg" alt="Research">
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <a href="applications.html" class="nav-main-link" data-menu="menu-applications">Applications</a>
+                        <div class="mobile-sub-menu">
+                            <a href="applications.html#industrial-facilities">Industrial Facilities</a>
+                            <a href="applications.html#thermal-power">Thermal Power</a>
+                            <a href="applications.html#steel">Steel</a>
+                            <a href="applications.html#cement">Cement</a>
+                            <a href="applications.html#chemical-industries">Chemical Industries</a>
+                            <a href="applications.html#wastewater-treatment">Wastewater Treatment</a>
+                            <a href="applications.html#future-infrastructure">Future Infrastructure</a>
+                            <img src="assets/products.png" alt="Applications">
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <a href="about.html" class="nav-main-link" data-menu="menu-about">About</a>
+                        <div class="mobile-sub-menu">
+                            <a href="about.html#mission">Our Mission</a>
+                            <a href="about.html#approach">Our Approach</a>
+                            <a href="about.html#prototype">Prototype</a>
+                            <!-- <a href="about.html#roadmap">Roadmap</a> -->
+                            <a href="about.html#team">FOunders</a>
+                            <img src="assets/office.png" alt="About">
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-actions">
+                    <a href="mailto:aboutkiros@gmail.com?subject=KIROS%20Partnership%20Inquiry" class="nav-btn nav-btn-secondary">Partner With Us</a>
+                    <a href="about.html#contact" class="nav-btn nav-btn-primary">Contact Us</a>
+                </div>
+            </div>
+            <div class="nav-hamburger" id="navHamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+
+        <div class="mega-menu-wrapper" id="megaMenuWrapper">
+            <!-- TECHNOLOGY -->
+            <div class="mega-menu-panel" id="menu-technology">
+                <div class="mega-menu-content">
+                    <div class="mega-menu-left">
+                        <div class="mega-menu-eyebrow">TECHNOLOGY</div>
+                        <div class="mega-menu-title">The KIROS Platform</div>
+                    </div>
+                    <div class="mega-menu-center">
+                        <a href="technology.html#solar-energy" class="mega-menu-topic">Solar Energy</a>
+                        <a href="technology.html#modular-bioreactor" class="mega-menu-topic">Modular Bioreactor</a>
+                        <a href="technology.html#co2-integration" class="mega-menu-topic">CO₂ Integration</a>
+                        <a href="technology.html#water-circulation" class="mega-menu-topic">Water Circulation</a>
+                        <a href="technology.html#sensor-monitoring" class="mega-menu-topic">Sensor & Monitoring</a>
+                        <a href="technology.html#automation" class="mega-menu-topic">Automation</a>
+                    </div>
+                    <div class="mega-menu-right">
+                        <a href="technology.html" class="mega-menu-banner-link">
+                            <div class="mega-menu-banner">
+                                <img src="assets/reactor.png" alt="KIROS Technology Platform">
+                            </div>
+                            <div class="mega-menu-banner-footer">
+                                <span class="banner-title">KIROS Technology</span>
+                                <span class="banner-explore">Explore Technology →</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HOW IT WORKS -->
+            <div class="mega-menu-panel" id="menu-how-it-works">
+                <div class="mega-menu-content">
+                    <div class="mega-menu-left">
+                        <div class="mega-menu-eyebrow">THE PROCESS</div>
+                        <div class="mega-menu-title">How KIROS Works</div>
+                    </div>
+                    <div class="mega-menu-center">
+                        <a href="how-it-works.html#solar-capture" class="mega-menu-topic">Solar Energy Capture</a>
+                        <a href="how-it-works.html#co2-injection" class="mega-menu-topic">CO₂ Injection</a>
+                        <a href="how-it-works.html#photosynthesis" class="mega-menu-topic">Algae Photosynthesis</a>
+                        <a href="how-it-works.html#harvest" class="mega-menu-topic">Biomass Harvest</a>
+                        <a href="how-it-works.html#outputs" class="mega-menu-topic">System Outputs</a>
+                    </div>
+                    <div class="mega-menu-right">
+                        <a href="how-it-works.html" class="mega-menu-banner-link">
+                            <div class="mega-menu-banner">
+                                <img src="assets/sketch.png" alt="The KIROS Process" style="object-fit: contain;">
+                            </div>
+                            <div class="mega-menu-banner-footer">
+                                <span class="banner-title">The KIROS Process</span>
+                                <span class="banner-explore">Explore How It Works →</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RESEARCH -->
+            <div class="mega-menu-panel" id="menu-research">
+                <div class="mega-menu-content">
+                    <div class="mega-menu-left">
+                        <div class="mega-menu-eyebrow">RESEARCH & DEVELOPMENT</div>
+                        <div class="mega-menu-title">Engineering Through Research</div>
+                    </div>
+                    <div class="mega-menu-center">
+                        <a href="research.html#microalgae" class="mega-menu-topic">Microalgae Research</a>
+                        <a href="research.html#bioreactor" class="mega-menu-topic">Bioreactor Research</a>
+                        <a href="research.html#co2-utilization" class="mega-menu-topic">CO₂ Utilization</a>
+                        <a href="research.html#solar-integration" class="mega-menu-topic">Solar Integration</a>
+                        <a href="research.html#system-monitoring" class="mega-menu-topic">System Monitoring</a>
+                        <a href="research.html#prototype-validation" class="mega-menu-topic">Prototype Validation</a>
+                    </div>
+                    <div class="mega-menu-right">
+                        <a href="research.html" class="mega-menu-banner-link">
+                            <div class="mega-menu-banner">
+                                <img src="assets/mega-menu/research.jpg" alt="KIROS Research">
+                            </div>
+                            <div class="mega-menu-banner-footer">
+                                <span class="banner-title">KIROS Research</span>
+                                <span class="banner-explore">Explore Research →</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- APPLICATIONS -->
+            <div class="mega-menu-panel" id="menu-applications">
+                <div class="mega-menu-content">
+                    <div class="mega-menu-left">
+                        <div class="mega-menu-eyebrow">APPLICATIONS</div>
+                        <div class="mega-menu-title">Built for Real-World Environments</div>
+                    </div>
+                    <div class="mega-menu-center">
+                        <a href="applications.html#industrial-facilities" class="mega-menu-topic">Industrial
+                            Facilities</a>
+                        <a href="applications.html#thermal-power" class="mega-menu-topic">Thermal Power</a>
+                        <a href="applications.html#steel" class="mega-menu-topic">Steel</a>
+                        <a href="applications.html#cement" class="mega-menu-topic">Cement</a>
+                        <a href="applications.html#chemical-industries" class="mega-menu-topic">Chemical Industries</a>
+                        <a href="applications.html#wastewater-treatment" class="mega-menu-topic">Wastewater
+                            Treatment</a>
+                        <a href="applications.html#future-infrastructure" class="mega-menu-topic">Future
+                            Infrastructure</a>
+                    </div>
+                    <div class="mega-menu-right">
+                        <a href="applications.html" class="mega-menu-banner-link">
+                            <div class="mega-menu-banner">
+                                <img src="assets/products.png" alt="KIROS Applications">
+                            </div>
+                            <div class="mega-menu-banner-footer">
+                                <span class="banner-title">KIROS Applications</span>
+                                <span class="banner-explore">Explore Applications →</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ABOUT -->
+            <div class="mega-menu-panel" id="menu-about">
+                <div class="mega-menu-content">
+                    <div class="mega-menu-left">
+                        <div class="mega-menu-eyebrow">ABOUT KIROS</div>
+                        <div class="mega-menu-title">Building Climate Infrastructure</div>
+                    </div>
+                    <div class="mega-menu-center">
+                        <a href="about.html#mission" class="mega-menu-topic">Our Mission</a>
+                        <a href="about.html#approach" class="mega-menu-topic">Our Approach</a>
+                        <a href="about.html#prototype" class="mega-menu-topic">Prototype</a>
+                        <!-- <a href="about.html#roadmap" class="mega-menu-topic">Roadmap</a> -->
+                        <a href="about.html#team" class="mega-menu-topic">Founders</a>
+                    </div>
+                    <div class="mega-menu-right">
+                        <a href="about.html" class="mega-menu-banner-link">
+                            <div class="mega-menu-banner">
+                                <img src="assets/office.png" alt="About KIROS">
+                            </div>
+                            <div class="mega-menu-banner-footer">
+                                <span class="banner-title">About KIROS</span>
+                                <span class="banner-explore">Explore About →</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="menu-backdrop" id="menuBackdrop"></div>
+
+
+
+    <!-- APPLICATIONS HERO -->
+    <section class="premium-section"
+        style="position: relative; padding-top: 160px; padding-bottom: 60px; overflow: hidden;">
+        <div class="atmospheric-background">
+            <div class="hero-gradient hero-gradient-top"></div>
+            <div class="hero-gradient hero-gradient-middle"></div>
+            <div class="hero-gradient hero-gradient-bottom"></div>
+        </div>
+        <div class="premium-container" style="position: relative; z-index: 1;">
+            <div class="editorial-eyebrow">APPLICATIONS</div>
+            <h1 class="editorial-headline-hero">Designed Around<br>Real-World Emissions.</h1>
+            <p class="editorial-subtext" style="margin-bottom: 40px;">KIROS is exploring how modular biological
+                carbon-capture systems could integrate with industrial environments where concentrated CO₂ sources and
+                supporting infrastructure are available.</p>
+            <img src="assets/inner/app_hero_1789554466978.jpg" alt="KIROS Industrial Applications Platform"
+                style="width: 100%; border-radius: 40px; box-shadow: 0 40px 80px rgba(0,0,0,0.06); object-fit: cover;">
+        </div>
+    </section>
+
+    <!-- APPLICATIONS OVERVIEW -->
+    <section class="premium-section" style="padding-top: 40px;">
+        <div class="premium-container">
+
+            <!-- INDUSTRIAL FACILITIES -->
+            <div id="industrial-facilities" class="scroll-anchor premium-panel-light"
+                style="margin-bottom: 80px; padding: 60px;">
+                <div class="editorial-split">
+                    <div class="editorial-split-content">
+                        <h2 class="editorial-headline-section">Industrial Facilities</h2>
+                        <p class="editorial-subtext" style="font-size: 18px; margin-bottom: 24px;">Manufacturing
+                            environments can produce continuous or process-related CO₂ emissions.</p>
+                        <p class="editorial-subtext" style="font-size: 18px; margin-bottom: 24px;">KIROS could
+                            potentially be explored where a suitable CO₂ source, land availability, water resources and
+                            supporting infrastructure exist.</p>
+                        <div
+                            style="background: #FFFFFF; padding: 20px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.04);">
+                            <strong>Focus:</strong> CO₂ source integration, modular deployment, monitoring and system
+                            integration.
+                        </div>
+                    </div>
+                    <div class="editorial-split-visual">
+                        <img src="assets/mega-menu/applications.jpg" alt="Industrial Facilities">
+                    </div>
+                </div>
+            </div>
+
+            <!-- THERMAL POWER (DARK PANEL) -->
+            <div id="thermal-power" class="scroll-anchor premium-panel-light"
+                style="margin-bottom: 80px; padding: 60px;">
+                <div class="glow-effect"></div>
+                <div class="editorial-split" style="position: relative; z-index: 2; direction: rtl;">
+                    <div class="editorial-split-content" style="direction: ltr;">
+                        <h2 class="editorial-headline-section">Thermal Power</h2>
+                        <p class="editorial-subtext" style="font-size: 18px; margin-bottom: 24px;">Thermal power
+                            generation can produce concentrated flue-gas CO₂ streams.</p>
+                        <p class="editorial-subtext" style="font-size: 18px; margin-bottom: 24px;">KIROS research can
+                            explore whether biological cultivation systems can be integrated downstream of suitable
+                            emissions-handling and gas-conditioning systems.</p>
+                        <p class="editorial-subtext"
+                            style="font-size: 14px; color: #718096; margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(0,0,0,0.06);">
+                            * Note: Biological systems require gas conditioning; raw flue gas cannot be connected
+                            directly to algae chambers.
+                        </p>
+                    </div>
+                    <div class="editorial-split-visual" style="direction: ltr;">
+                        <img src="assets/mega-menu/technology.jpg" alt="Thermal Power Integration"
+                            style="border: 1px solid rgba(0,0,0,0.06); border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.04);">
+                    </div>
+                </div>
+            </div>
+
+            <!-- TWO COLUMN APPLICATIONS -->
+            <div class="editorial-split" style="gap: 40px; margin-bottom: 80px;">
+                <!-- STEEL -->
+                <div id="steel" class="scroll-anchor premium-panel-light" style="padding: 60px;">
+                    <h2 class="editorial-headline-section" style="font-size: 40px;">Steel</h2>
+                    <p class="editorial-subtext" style="font-size: 18px; margin-bottom: 24px;">Steel production involves
+                        significant process and energy-related emissions.</p>
+                    <p class="editorial-subtext" style="font-size: 18px;">KIROS could potentially be explored as part of
+                        broader industrial carbon-management infrastructure where suitable CO₂ streams and operating
+                        conditions exist.</p>
+                </div>
+
+                <!-- CEMENT -->
+                <div id="cement" class="scroll-anchor premium-panel-light"
+                    style="padding: 60px; background: #FFFFFF; border: 1px solid rgba(0,0,0,0.06);">
+                    <h2 class="editorial-headline-section" style="font-size: 40px;">Cement</h2>
+                    <p class="editorial-subtext" style="font-size: 18px; margin-bottom: 24px;">Cement manufacturing is a
+                        major industrial source of CO₂.</p>
+                    <p class="editorial-subtext" style="font-size: 18px;">KIROS can explore biological utilization
+                        pathways alongside appropriate emissions handling and conditioning infrastructure.</p>
+                </div>
+            </div>
+
+            <!-- CHEMICAL INDUSTRIES & WASTEWATER TREATMENT -->
+            <div class="editorial-split" style="gap: 40px; margin-bottom: 80px;">
+                <!-- CHEMICAL -->
+                <div id="chemical-industries" class="scroll-anchor premium-panel-light"
+                    style="padding: 60px; background: #FFFFFF; border: 1px solid rgba(0,0,0,0.06);">
+                    <h2 class="editorial-headline-section" style="font-size: 40px;">Chemical Industries</h2>
+                    <p class="editorial-subtext" style="font-size: 18px;">Chemical plants often have highly concentrated
+                        CO₂ streams suitable for biological integration.</p>
+                </div>
+                <!-- WASTEWATER -->
+                <div id="wastewater-treatment" class="scroll-anchor premium-panel-light" style="padding: 60px;">
+                    <h2 class="editorial-headline-section" style="font-size: 40px;">Wastewater</h2>
+                    <p class="editorial-subtext" style="font-size: 18px;">Nutrient-rich industrial wastewater can
+                        potentially support microalgae cultivation after appropriate conditioning.</p>
+                </div>
+            </div>
+
+            <!-- FUTURE INFRASTRUCTURE -->
+            <div id="future-infrastructure" class="scroll-anchor premium-panel-massive"
+                style="padding: 80px 60px; text-align: center;">
+                <div class="glow-effect"></div>
+                <div style="position: relative; z-index: 2; max-width: 900px; margin: 0 auto;">
+                    <div class="editorial-eyebrow">LOOKING FORWARD</div>
+                    <h2 class="editorial-headline-section">Future Infrastructure</h2>
+                    <p class="editorial-subtext" style="margin: 0 auto 40px;">The long-term vision for KIROS extends
+                        beyond individual industrial sites.</p>
+                    <img src="assets/raceway.png" alt="KIROS Future Infrastructure Installation"
+                        style="width: 100%; border-radius: 32px; box-shadow: 0 30px 60px rgba(0,0,0,0.08); margin-bottom: 40px; object-fit: cover;">
+                    <p class="editorial-subtext" style="font-size: 16px; margin: 0 auto;">The modular architecture could
+                        potentially support distributed climate infrastructure where solar energy, biological systems,
+                        CO₂ management, water systems and intelligent monitoring can operate together.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container" style="max-width: 1400px; margin: 0 auto; padding: 0 40px;">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="assets/logo_cut.png" alt="KIROS" style="height: 32px; margin-bottom: 24px;">
+                    <p style="font-size: 16px; line-height: 1.6; color: #4A5568; max-width: 400px;">
+                        KIROS is developing integrated climate infrastructure combining renewable energy, microalgae
+                        cultivation and modular engineering for industrial carbon capture applications.
+                    </p>
+                </div>
+
+                <div class="footer-links-group" style="display: flex; flex-direction: column; gap: 16px;">
+                    <h4
+                        style="font-size: 14px; font-weight: 600; color: #111111; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px;">
+                        Navigation</h4>
+                    <a href="technology.html"
+                        style="color: #4A5568; text-decoration: none; font-size: 15px; transition: color 0.3s;">Technology</a>
+                    <a href="how-it-works.html"
+                        style="color: #4A5568; text-decoration: none; font-size: 15px; transition: color 0.3s;">How It
+                        Works</a>
+                    <a href="research.html"
+                        style="color: #4A5568; text-decoration: none; font-size: 15px; transition: color 0.3s;">Research</a>
+                    <a href="applications.html"
+                        style="color: #4A5568; text-decoration: none; font-size: 15px; transition: color 0.3s;">Applications</a>
+                    <a href="about.html"
+                        style="color: #4A5568; text-decoration: none; font-size: 15px; transition: color 0.3s;">About</a>
+                </div>
+
+                <div class="footer-links-group" style="display: flex; flex-direction: column; gap: 16px;">
+                    <h4
+                        style="font-size: 14px; font-weight: 600; color: #111111; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px;">
+                        Connect</h4>
+                    <a href="mailto:aboutkiros@gmail.com?subject=KIROS%20Partnership%20Inquiry" style="color: #4A5568; text-decoration: none; font-size: 15px; transition: color 0.3s;">Partner
+                        With Us</a>
+                    <a href="about.html#contact" style="color: #4A5568; text-decoration: none; font-size: 15px; transition: color 0.3s;">Contact
+                        Us</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom"
+                style="display: flex; justify-content: space-between; align-items: center; padding-top: 40px; border-top: 1px solid rgba(0,0,0,0.1);">
+                <span class="footer-copy" style="color: #718096; font-size: 14px;">&copy; 2026 KIROS. All rights
+                    reserved.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js?v=1.2"></script>
+</body>
+
+</html>

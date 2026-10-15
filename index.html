@@ -1,461 +1,726 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KIROS</title>
-    <link rel="stylesheet" href="index.css">
+    <title>KIROS | Solar Energy & Biological Carbon Capture</title>
+    <meta name="description"
+        content="KIROS is developing a next-generation solar-powered algae carbon capture platform that transforms industrial emissions into renewable energy, valuable biomass, and measurable environmental impact.">
+    <meta name="keywords"
+        content="KIROS, carbon capture, algae bioreactor, solar energy, climate tech, deep tech startup">
+    <meta name="theme-color" content="#0a1628">
+
+        <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="stylesheet" href="index.css?v=1.2">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- GSAP for advanced animations -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <!-- Vanilla Tilt.js for 3D tilt effects -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
-    <style>
-        /* Custom cursor styles */
-        /* .custom-cursor {
-            width: 20px;
-            height: 20px;
-            border: 2px solid #082618;
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s ease;
-        }
-        .custom-cursor.hovered {
-            transform: scale(1.5);
-            background: rgba(8, 38, 24, 0.2);
-            border-color: #1e492e;
-        } */
-        /* Preloader styles */
-        .preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #fdfdfd;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 10000;
-            transition: opacity 0.5s ease;
-        }
-        .preloader.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-        .preloader-logo {
-            width: 100px;
-            animation: pulse 1.5s infinite ease-in-out;
-        }
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-        }
-    </style>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+            rel="stylesheet">
+
+        <!-- GSAP -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+        <script>
+            // Prevent white flash on subsequent page loads
+            if (sessionStorage.getItem('kiros_visited')) {
+                document.documentElement.style.setProperty('--preloader-display', 'none');
+            } else {
+                document.documentElement.style.setProperty('--preloader-display', 'flex');
+            }
+        </script>
 </head>
+
 <body>
+
+    <!-- <div class="canvas-container">
+        <canvas class="global-canvas" id="heroCanvas"></canvas>
+    </div> -->
+
     <!-- Preloader -->
-    <div class="preloader">
-        <img src="assets/logo_cut.png" alt="KIROS Logo" class="preloader-logo">
+    <div class="preloader" id="preloader">
+        <img src="assets/logo_cut.png" alt="KIROS" class="preloader-logo">
+        <div class="preloader-bar">
+            <div class="preloader-bar-fill"></div>
+        </div>
     </div>
-    <!-- Custom Cursor -->
-    <div class="custom-cursor"></div>
-
-    <div class="container">
-        <header>
-            <div class="logo">
-                <img src="assets/logo_cut.png" alt="" width="150" height="60">
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#Algae">Algae</a></li>
-                    <li><a href="#technology">Technology</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="header-actions">
-                <a href="#contact" class="btn btn-primary">Join Us</a>
-            </div>
-        </header>
-
-        <main class="hero-section fade-section" id="home">
-            <div class="hero-content">
-                <h2>Powering Tomorrow with <b>Solar & Algae</b></h2>
-            </div>
-            <div class="hero-description">
-                <p>Revolutionary <b>dual-layer technology</b> that generates clean energy while <b>capturing CO₂</b> through integrated solar farms and <b>algae bioreactors</b></p>
-                <p>Experience sustainability at scale with vast solar farms, thriving algae chambers, and green landscapes working together</p>
-                <a href="#about" class="btn btn-secondary">Know More</a>
-            </div>
-        </main>
-    </div>
-
-    <div class="main-image-container parallax">
-        s
-        <img src="/assets/kiros title.png" alt="">
-    </div>
-
-    <section class="about-section fade-section" id="about">
-        <div class="container">
-            <div class="about-content">
-                <p class="subtitle">ABOUT US</p>
-                <h2 class="title">Turning Sunlight and Algae Into Opportunity.</h2>
-                <p class="description">
-                    KIROS is revolutionizing clean energy through innovative dual-layer technology that maximizes efficiency while minimizing environmental impact.
-                </p>
-            </div>
-            <div class="services-list">
-                <div class="service-item">
-                    <div class="service-number">01.</div>
-                    <div class="service-details">
-                        <h3 class="service-title">Our Mission</h3>
-                        <p class="service-description">
-                            To accelerate the global transition to clean energy by developing breakthrough technologies that generate renewable power while actively removing CO₂ from the atmosphere.
-                        </p>
-                    </div>
-                </div>
-                <div class="service-item">
-                    <div class="service-number">02.</div>
-                    <div class="service-details">
-                        <h3 class="service-title">Our Vision</h3>
-                        <p class="service-description">
-                            A world powered entirely by clean energy, where every power plant contributes to carbon capture, creating a sustainable future for generations to come.
-                        </p>
-                    </div>
-                </div>
-                <div class="service-item">
-                    <div class="service-number">03.</div>
-                    <div class="service-details">
-                        <h3 class="service-title">Our Innovation</h3>
-                        <p class="service-description">
-                            Pioneering dual-layer systems that combine perovskite panels with algae bioreactors, delivering 50% higher efficiency than traditional solar farms.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="impact-section fade-in-section">
-        <div class="container">
-            <div class="impact-grid">
-                <div class="impact-card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
-                    <div class="impact-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
-                        </svg>
-                    </div>
-                    <div class="impact-details">
-                        <h3 class="impact-number" data-target="8900">0</h3>
-                        <p class="impact-text">MWh of Clean Energy Generated Yearly (25 acre)</p>
-                    </div>
-                </div>
-                <div class="impact-card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
-                    <div class="impact-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-                        </svg>
-                    </div>
-                    <div class="impact-details">
-                        <h3 class="impact-number" data-target="290">0</h3>
-                        <p class="impact-text">Tons of CO₂ Saved Annually per Acre</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="solutions-section algae-section fade-in-section" id="Algae">
-        <div class="container">
-            <div class="solutions-tag">ALGAE</div>
-            <h2>From nature to future: algae-powered sustainability</h2>
-            <div class="solutions-image">
-                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEg4ybe8Ia6cQzPrW1f0AaAq5pEj6Di8nbjySmsw12Q9D6Yn5YqdmS-rJ-yEVGeiR8-m2Hoke3ctWiLXe99e_0rayQcyeHap9RvgOzhJSHMyBdgBNSqnlNkR-O7Mk-bOuPyQC41mi89MTVZlRXsCukfaNNlxKXFkN2pSexp02laNkhu6cJYoFZNco8YAb1Av" alt="A row of illuminated algae bioreactors in a modern facility">
-            </div>
+    <!-- ═══════════════════════════════════════════════════════════
+         FIRST SCREEN WRAPPER
+         ═══════════════════════════════════════════════════════════ -->
+    <div class="first-screen">
+        <div class="atmospheric-background">
+            <div class="hero-gradient hero-gradient-top"></div>
+            <div class="hero-gradient hero-gradient-middle"></div>
+            <div class="hero-gradient hero-gradient-bottom"></div>
         </div>
 
-        <div class="custom-solution-section">
-            <div class="container1">
-                <div class="solution-tag">ALGAE INNOVATIONS</div>
-                <h2 class="solution-headline">Transforming algae into sustainable solutions</h2>
-                <div class="solution-content-wrapper">
-                    <div class="solution-image">
-                        <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhMk4B38_CGNNLZajFkdPkMb4H6Gi3y4jQ3kb7TPEdKZKFB_G0oKTcc-N4bTyOumarlBPRGlpin8-yWQAQEvk7xn55wCqLVJn69jbzEV6-EKhXa8KOUN7S3VcaHE49Yfo4zhyNAFhqRPV1q83g8x4GkEo9jlnHyzW-yOIxdY9iv0U_SbdnoC4BxuDvT5wJn" alt="Spirulina and Chlorella powder capsules">
-                    </div>
-                    <div class="solution-details">
-                        <div class="solution-number">01</div>
-                        <h3 class="solution-title">Nutraceuticals</h3>
-                        <p class="solution-description">Cultivating Spirulina and Chlorella to create nutrient-rich powders and capsules, supporting natural health with sustainable superfoods.</p>
-                    </div>
-                </div>
-                <div class="solution-content-wrapper">
-                    <div class="solution-image">
-                        <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhkeDgvzuxrsVC1a-3VbtH0XOC-vjcIsqwJz8qPjLrbPCjXt8H8vb4GtPXL4CTdQB3tMAMieTWo9msOF3NNq8AeYGfQSpOGo6Oeyk5qh2ovPb3Xd6o9e3P0rErqwZKfwRc2Sg1uTC-Ski-SSptW6DOUL9Qs5S1KhHu_HWEfZ4mhqYzf8PU617MIzbkr4lrR" alt="Eco-friendly algae-based bioplastic products">
-                    </div>
-                    <div class="solution-details">
-                        <div class="solution-number">02</div>
-                        <h3 class="solution-title">Bioplastics</h3>
-                        <p class="solution-description">Developing eco-friendly plastics from algae biomass, creating sustainable alternatives like bottles, plates, and glasses.</p>
-                    </div>
-                </div>
-                <div class="solution-content-wrapper">
-                    <div class="solution-image">
-                        <img src="https://blogger.googleusercontent.com/img/a/AVvXsEibWqLP4SQ97DHpgnEoO_WK0zyrhkZFz9azbGOhI3VjqYeAsZIaSdpxGYOOsSI-dvDbkWQVAt5aizixDckm2h_fVybK77HoRYHXrxPpUpusYwnxds1vJ01qN6s8yKsV8wJ_etUgwnVF-32isprFujptigRo-ge1jwtOM5t0M03p8yy3zdhUX-fwF433Ss39" alt="Algae breaking down conventional plastic waste">
-                    </div>
-                    <div class="solution-details">
-                        <div class="solution-number">03</div>
-                        <h3 class="solution-title">Plastic Decomposition</h3>
-                        <p class="solution-description">Exploring algae’s potential to break down conventional plastics, accelerating the shift toward a circular and green economy.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="tech-section fade-section" id="technology">
-        <div class="container">
-            <div class="tech-header">
-                <h2>Revolutionary <span class="highlight">Technology</span></h2>
-                <p>Our dual-layer system combines perovskite panels with algae bioreactors, creating a symbiotic relationship that maximizes energy output while capturing carbon.</p>
-            </div>
-            <div class="tech-main-content">
-                <div class="tech-image">
-                    <img src="/assets/model.jpg" alt="Diagram of a solar panel over an algae bioreactor">
-                </div>
-                <div class="how-it-works">
-                    <h3>How It Works</h3>
-                    <div class="step">
-                        <div class="step-number">1</div>
-                        <div class="step-details">
-                            <h4>Solar Energy Capture</h4>
-                            <p>High-efficiency perovskite panels convert sunlight to electricity with 22% efficiency.</p>
+        <!-- ═══════════════════════════════════════════════════════════
+             NAVIGATION
+             ═══════════════════════════════════════════════════════════ -->
+        <nav class="navbar" id="navbar">
+            <div class="navbar-container">
+                <a href="index.html" class="nav-logo" aria-label="KIROS Home">
+                    <img src="assets/logo_cut.png" alt="KIROS">
+                </a>
+                <div class="nav-menu" id="navMenu">
+                    <div class="nav-links">
+                        <div class="nav-item">
+                            <a href="technology.html" class="nav-main-link" data-menu="menu-technology">Technology</a>
+                            <div class="mobile-sub-menu">
+                                <a href="technology.html#solar-energy">Solar Energy</a>
+                                <a href="technology.html#modular-bioreactor">Modular Bioreactor</a>
+                                <a href="technology.html#co2-integration">CO₂ Integration</a>
+                                <a href="technology.html#water-circulation">Water Circulation</a>
+                                <a href="technology.html#sensor-monitoring">Sensor & Monitoring</a>
+                                <a href="technology.html#automation">Automation</a>
+                                <img src="assets/mega-menu/technology.jpg" alt="Technology">
+                            </div>
                         </div>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">2</div>
-                        <div class="step-details">
-                            <h4>Heat Recovery</h4>
-                            <p>Waste heat from panels is channeled to algae bioreactors below, maintaining optimal growth temperature.</p>
+                        <div class="nav-item">
+                            <a href="how-it-works.html" class="nav-main-link" data-menu="menu-how-it-works">How It
+                                Works</a>
+                            <div class="mobile-sub-menu">
+                                <a href="how-it-works.html#solar-capture">Solar Energy Capture</a>
+                                <a href="how-it-works.html#co2-injection">CO₂ Injection</a>
+                                <a href="how-it-works.html#photosynthesis">Algae Photosynthesis</a>
+                                <a href="how-it-works.html#harvest">Biomass Harvest</a>
+                                <a href="how-it-works.html#outputs">System Outputs</a>
+                                <img src="assets/mega-menu/process.jpg" alt="Process">
+                            </div>
                         </div>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">3</div>
-                        <div class="step-details">
-                            <h4>Carbon Capture</h4>
-                            <p>Algae absorbs atmospheric CO₂ while producing biomass for biofuels and carbon-negative materials.</p>
+                        <div class="nav-item">
+                            <a href="research.html" class="nav-main-link" data-menu="menu-research">Research</a>
+                            <div class="mobile-sub-menu">
+                                <a href="research.html#microalgae">Microalgae Research</a>
+                                <a href="research.html#bioreactor">Bioreactor Research</a>
+                                <a href="research.html#co2-utilization">CO₂ Utilization</a>
+                                <a href="research.html#solar-integration">Solar Integration</a>
+                                <a href="research.html#system-monitoring">System Monitoring</a>
+                                <a href="research.html#prototype-validation">Prototype Validation</a>
+                                <img src="assets/mega-menu/research.jpg" alt="Research">
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
-                    <img src="/assets/save-energy.svg" alt="Efficiency Icon" class="feature-icon">
-                    <h4>50% Higher Efficiency</h4>
-                    <p>Compared to traditional solar farms</p>
-                </div>
-                <div class="feature-card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
-                    <img src="/assets/carbon-dioxide-sensor.svg" alt="CO2 Reduction Icon" class="feature-icon">
-                    <h4>80% CO₂ Reduction</h4>
-                    <p>Active carbon capture technology</p>
-                </div>
-                <div class="feature-card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
-                    <img src="/assets/revenue (1).svg" alt="Dual Revenue Icon" class="feature-icon">
-                    <h4>Dual Revenue</h4>
-                    <p>Energy + carbon credits + biomass</p>
-                </div>
-                <div class="feature-card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
-                    <img src="/assets/business-graph.svg" alt="Scalable Design Icon" class="feature-icon">
-                    <h4>Scalable Design</h4>
-                    <p>Modular system for any scale</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="contact-section fade-section" id="contact">
-        <div class="contact-container">
-            <h2>Contact Us</h2>
-            <p class="subtitle">Have a question or want to work together? Drop us a line below.</p>
-            <div class="form-wrapper">
-                <form action="https://formspree.io/f/yourFormId" method="POST">
-                    <div class="form-row">
-                        <div class="input-group">
-                            <label for="name">Your Name</label>
-                            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                        <div class="nav-item">
+                            <a href="applications.html" class="nav-main-link"
+                                data-menu="menu-applications">Applications</a>
+                            <div class="mobile-sub-menu">
+                                <a href="applications.html#industrial-facilities">Industrial Facilities</a>
+                                <a href="applications.html#thermal-power">Thermal Power</a>
+                                <a href="applications.html#steel">Steel</a>
+                                <a href="applications.html#cement">Cement</a>
+                                <a href="applications.html#chemical-industries">Chemical Industries</a>
+                                <a href="applications.html#wastewater-treatment">Wastewater Treatment</a>
+                                <a href="applications.html#future-infrastructure">Future Infrastructure</a>
+                                <img src="assets/mega-menu/applications.jpg" alt="Applications">
+                            </div>
                         </div>
-                        <div class="input-group">
-                            <label for="email">Email Address</label>
-                            <div class="input-with-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M22 6L12 13L2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                                <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                        <div class="nav-item">
+                            <a href="about.html" class="nav-main-link" data-menu="menu-about">About</a>
+                            <div class="mobile-sub-menu">
+                                <a href="about.html#mission">Our Mission</a>
+                                <a href="about.html#approach">Our Approach</a>
+                                <a href="about.html#prototype">Prototype</a>
+                                <a href="about.html#roadmap">Roadmap</a>
+                                <a href="about.html#team">Team</a>
+                                <img src="assets/mega-menu/about.jpg" alt="About">
                             </div>
                         </div>
                     </div>
-                    <div class="input-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="5" placeholder="How can we help you?" required></textarea>
+                    <div class="nav-actions">
+                        <a href="mailto:aboutkiros@gmail.com?subject=KIROS%20Partnership%20Inquiry" class="nav-btn nav-btn-secondary">Partner With Us</a>
+                        <a href="about.html#contact" class="nav-btn nav-btn-primary">Contact Us</a>
                     </div>
-                    <button type="submit">Send Message</button>
-                </form>
+                </div>
+                <div class="nav-hamburger" id="navHamburger" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </div>
             </div>
-            <p class="terms-text">
-                By submitting this form, you acknowledge that your information will be used in accordance with our <a href="#">Privacy Policy</a>.
+
+            <div class="mega-menu-wrapper" id="megaMenuWrapper">
+                <!-- TECHNOLOGY -->
+                <div class="mega-menu-panel" id="menu-technology">
+                    <div class="mega-menu-content">
+                        <div class="mega-menu-left">
+                            <div class="mega-menu-eyebrow">TECHNOLOGY</div>
+                            <div class="mega-menu-title">The KIROS Platform</div>
+                        </div>
+                        <div class="mega-menu-center">
+                            <a href="technology.html#solar-energy" class="mega-menu-topic">Solar Energy</a>
+                            <a href="technology.html#modular-bioreactor" class="mega-menu-topic">Modular Bioreactor</a>
+                            <a href="technology.html#co2-integration" class="mega-menu-topic">CO₂ Integration</a>
+                            <a href="technology.html#water-circulation" class="mega-menu-topic">Water Circulation</a>
+                            <a href="technology.html#sensor-monitoring" class="mega-menu-topic">Sensor & Monitoring</a>
+                            <a href="technology.html#automation" class="mega-menu-topic">Automation</a>
+                        </div>
+                        <div class="mega-menu-right">
+                            <a href="technology.html" class="mega-menu-banner-link">
+                                <div class="mega-menu-banner">
+                                    <img src="assets/reactor.png" alt="KIROS Technology Platform">
+                                </div>
+                                <div class="mega-menu-banner-footer">
+                                    <span class="banner-title">KIROS Technology</span>
+                                    <span class="banner-explore">Explore Technology →</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HOW IT WORKS -->
+                <div class="mega-menu-panel" id="menu-how-it-works">
+                    <div class="mega-menu-content">
+                        <div class="mega-menu-left">
+                            <div class="mega-menu-eyebrow">THE PROCESS</div>
+                            <div class="mega-menu-title">How KIROS Works</div>
+                        </div>
+                        <div class="mega-menu-center">
+                            <a href="how-it-works.html#solar-capture" class="mega-menu-topic">Solar Energy Capture</a>
+                            <a href="how-it-works.html#co2-injection" class="mega-menu-topic">CO₂ Injection</a>
+                            <a href="how-it-works.html#photosynthesis" class="mega-menu-topic">Algae Photosynthesis</a>
+                            <a href="how-it-works.html#harvest" class="mega-menu-topic">Biomass Harvest</a>
+                            <a href="how-it-works.html#outputs" class="mega-menu-topic">System Outputs</a>
+                        </div>
+                        <div class="mega-menu-right">
+                            <a href="how-it-works.html" class="mega-menu-banner-link">
+                                <div class="mega-menu-banner">
+                                    <img src="assets/sketch.png" alt="The KIROS Process" style="object-fit: contain;">
+                                </div>
+                                <div class="mega-menu-banner-footer">
+                                    <span class="banner-title">The KIROS Process</span>
+                                    <span class="banner-explore">Explore How It Works →</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RESEARCH -->
+                <div class="mega-menu-panel" id="menu-research">
+                    <div class="mega-menu-content">
+                        <div class="mega-menu-left">
+                            <div class="mega-menu-eyebrow">RESEARCH & DEVELOPMENT</div>
+                            <div class="mega-menu-title">Engineering Through Research</div>
+                        </div>
+                        <div class="mega-menu-center">
+                            <a href="research.html#microalgae" class="mega-menu-topic">Microalgae Research</a>
+                            <a href="research.html#bioreactor" class="mega-menu-topic">Bioreactor Research</a>
+                            <a href="research.html#co2-utilization" class="mega-menu-topic">CO₂ Utilization</a>
+                            <a href="research.html#solar-integration" class="mega-menu-topic">Solar Integration</a>
+                            <a href="research.html#system-monitoring" class="mega-menu-topic">System Monitoring</a>
+                            <a href="research.html#prototype-validation" class="mega-menu-topic">Prototype
+                                Validation</a>
+                        </div>
+                        <div class="mega-menu-right">
+                            <a href="research.html" class="mega-menu-banner-link">
+                                <div class="mega-menu-banner">
+                                    <img src="assets/mega-menu/research.jpg" alt="KIROS Research">
+                                </div>
+                                <div class="mega-menu-banner-footer">
+                                    <span class="banner-title">KIROS Research</span>
+                                    <span class="banner-explore">Explore Research →</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- APPLICATIONS -->
+                <div class="mega-menu-panel" id="menu-applications">
+                    <div class="mega-menu-content">
+                        <div class="mega-menu-left">
+                            <div class="mega-menu-eyebrow">APPLICATIONS</div>
+                            <div class="mega-menu-title">Built for Real-World Environments</div>
+                        </div>
+                        <div class="mega-menu-center">
+                            <a href="applications.html#industrial-facilities" class="mega-menu-topic">Industrial
+                                Facilities</a>
+                            <a href="applications.html#thermal-power" class="mega-menu-topic">Thermal Power</a>
+                            <a href="applications.html#steel" class="mega-menu-topic">Steel</a>
+                            <a href="applications.html#cement" class="mega-menu-topic">Cement</a>
+                            <a href="applications.html#chemical-industries" class="mega-menu-topic">Chemical
+                                Industries</a>
+                            <a href="applications.html#wastewater-treatment" class="mega-menu-topic">Wastewater
+                                Treatment</a>
+                            <a href="applications.html#future-infrastructure" class="mega-menu-topic">Future
+                                Infrastructure</a>
+                        </div>
+                        <div class="mega-menu-right">
+                            <a href="applications.html" class="mega-menu-banner-link">
+                                <div class="mega-menu-banner">
+                                    <img src="assets/products.png" alt="KIROS Applications">
+                                </div>
+                                <div class="mega-menu-banner-footer">
+                                    <span class="banner-title">KIROS Applications</span>
+                                    <span class="banner-explore">Explore Applications →</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ABOUT -->
+                <div class="mega-menu-panel" id="menu-about">
+                    <div class="mega-menu-content">
+                        <div class="mega-menu-left">
+                            <div class="mega-menu-eyebrow">ABOUT KIROS</div>
+                            <div class="mega-menu-title">Building Climate Infrastructure</div>
+                        </div>
+                        <div class="mega-menu-center">
+                            <a href="about.html#mission" class="mega-menu-topic">Our Mission</a>
+                            <a href="about.html#approach" class="mega-menu-topic">Our Approach</a>
+                            <a href="about.html#prototype" class="mega-menu-topic">Prototype</a>
+                            <!-- <a href="about.html#roadmap" class="mega-menu-topic">Roadmap</a> -->
+                            <a href="about.html#team" class="mega-menu-topic">Founders</a>
+                        </div>
+                        <div class="mega-menu-right">
+                            <a href="about.html" class="mega-menu-banner-link">
+                                <div class="mega-menu-banner">
+                                    <img src="assets/office.png" alt="About KIROS">
+                                </div>
+                                <div class="mega-menu-banner-footer">
+                                    <span class="banner-title">About KIROS</span>
+                                    <span class="banner-explore">Explore About →</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="menu-backdrop" id="menuBackdrop"></div>
+
+        <!-- ═══════════════════════════════════════════════════════════
+         SECTION 1: HERO
+         ═══════════════════════════════════════════════════════════ -->
+
+
+        <!-- ═══════════════════════════════════════════════════════════
+         HOMEPAGE HERO
+         ═══════════════════════════════════════════════════════════ -->
+        <section class="hero" id="hero" style="padding-top: 140px; padding-bottom: 80px; position: relative;">
+            <div class="hero-container"
+                style="max-width: 1400px; margin: 0 auto; padding: 0 40px; text-align: center; position: relative; z-index: 2;">
+
+                <div class="editorial-eyebrow" style="margin-bottom: 24px; animation: fadeUp 1s ease forwards;">SOLAR ×
+                    ALGAE CARBON CAPTURE</div>
+
+                <h1 class="editorial-headline-hero"
+                    style="margin-bottom: 32px; animation: fadeUp 1s ease 0.1s forwards; opacity: 0;">
+                    Engineering the Future<br>of Carbon Capture.
+                </h1>
+
+                <p class="editorial-subtext"
+                    style="margin: 0 auto 48px; max-width: 700px; animation: fadeUp 1s ease 0.2s forwards; opacity: 0;">
+                    KIROS is developing a solar-powered biological carbon capture platform that combines renewable
+                    energy, microalgae cultivation and modular bioreactor systems for industrial applications.
+                </p>
+
+                <div class="hero-buttons"
+                    style="display: flex; justify-content: center; gap: 16px; margin-bottom: 80px; animation: fadeUp 1s ease 0.3s forwards; opacity: 0;">
+                    <a href="technology.html" class="nav-btn nav-btn-primary"
+                        style="padding: 18px 36px; font-size: 16px;">Explore KIROS</a>
+                    <a href="mailto:aboutkiros@gmail.com?subject=KIROS%20Partnership%20Inquiry" class="nav-btn nav-btn-secondary"
+                        style="padding: 18px 36px; font-size: 16px;">Partner With Us</a>
+                </div>
+
+                <div class="hero-visual" style="animation: fadeUp 1s ease 0.4s forwards; opacity: 0;">
+                    <img src="assets/home.png" alt="KIROS Platform Installation"
+                        style="width: 100%; aspect-ratio: 21/9; object-fit: cover; border-radius: 40px; box-shadow: 0 40px 100px rgba(0,0,0,0.1);">
+                </div>
+            </div>
+        </section>
+    </div> <!-- END FIRST SCREEN WRAPPER -->
+
+    <!-- HERO BOTTOM SIGNAL -->
+    <div style="background: #FFFFFF; padding: 40px 0; border-bottom: 1px solid rgba(0,0,0,0.04);">
+        <div class="premium-container" style="text-align: center;">
+            <p style="font-family: monospace; font-size: 14px; letter-spacing: 0.15em; color: #718096; margin: 0;">
+                SOLAR ENERGY &nbsp;&bull;&nbsp; MICROALGAE &nbsp;&bull;&nbsp; MODULAR BIOREACTORS &nbsp;&bull;&nbsp; CO₂
+                INTEGRATION &nbsp;&bull;&nbsp; INTELLIGENT MONITORING
             </p>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         SECTION: THE CHALLENGE
+         ═══════════════════════════════════════════════════════════ -->
+    <!-- <section id="challenge" class="premium-section" style="padding-top: 80px;">
+        <div class="premium-container" style="max-width: 900px; text-align: center;">
+            <div class="editorial-eyebrow">THE CHALLENGE</div>
+            <h2 class="editorial-headline-section" style="font-size: 40px; margin-bottom: 32px;">Industrial emissions
+                require scalable approaches to carbon reduction.</h2>
+            <p class="editorial-subtext" style="font-size: 20px; margin-bottom: 24px;">Carbon capture remains
+                technically complex, energy intensive and difficult to deploy across diverse industrial environments.
+            </p>
+            <p class="editorial-subtext" style="font-size: 20px; font-weight: 500; color: #2F855A;">KIROS explores a
+                different pathway by combining renewable energy with biological carbon capture.</p>
+        </div>
+    </section> -->
+
+    <!-- ═══════════════════════════════════════════════════════════
+         SECTION: THE KIROS APPROACH
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="premium-section" style="padding-top: 80px;">
+        <div class="premium-container">
+            <div style="text-align: center; margin-bottom: 60px;">
+                <div class="editorial-eyebrow">THE KIROS APPROACH</div>
+                <h2 class="editorial-headline-section">Energy + Biology + Engineering</h2>
+                <p class="editorial-subtext" style="margin: 24px auto 0;">A unified platform connecting Solar Energy,
+                    CO₂ Integration, Microalgae, Modular Bioreactors, and Monitoring & Automation.</p>
+            </div>
+
+            <div class="premium-panel-light"
+                style="padding: 20px; text-align: center; background: #FFFFFF; border: 1px solid rgba(0,0,0,0.05); border-radius: 40px; border: none;">
+                <img src="assets/sketch.png" alt="KIROS Platform Concept"
+                    style="width: 100%; aspect-ratio: 16/9; object-fit: contain; border-radius: 24px; box-shadow: 0 40px 100px rgba(0,0,0,0.1); margin-bottom: 0;">
+            </div>
         </div>
     </section>
 
-    <footer>
-        <div class="footer-container">
-            <div class="footer-top">
-                <span>Follow us</span>
-                <div class="social-links">
-                    <a href="#" aria-label="X social media page">
-                        <svg width="20" height="20" viewBox="0 0 1200 1227" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6902H306.615L611.412 515.685L658.88 583.579L1055.08 1150.31H892.476L569.165 687.854V687.828Z"/></svg>
-                    </a>
-                    <a href="#" aria-label="LinkedIn social media page">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                    </a>
-                    <a href="#" aria-label="YouTube channel">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
-                    </a>
-                    <a href="#" aria-label="GitHub profile">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                    </a>
+    <!-- ═══════════════════════════════════════════════════════════
+         SECTION: HOW KIROS WORKS
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="premium-section" style="padding-top: 80px;">
+        <div class="premium-container">
+            <div style="text-align: center; margin-bottom: 80px;">
+                <div class="editorial-eyebrow">HOW KIROS WORKS</div>
+                <h2 class="editorial-headline-section">From Sunlight to Biomass.</h2>
+            </div>
+
+            <div class="process-steps-row">
+                <!-- Connecting Line -->
+                <div class="process-connecting-line"></div>
+
+                <div class="process-step-item">
+                    <div style="font-size: clamp(48px, 6vw, 64px); font-weight: 300; color: #E2E8F0; line-height: 1; margin-bottom: 16px;">01</div>
+                    <div style="font-weight: 600; font-size: 15px; margin-bottom: 8px;">Solar Energy</div>
+                </div>
+                <div class="process-step-item">
+                    <div style="font-size: clamp(48px, 6vw, 64px); font-weight: 300; color: #E2E8F0; line-height: 1; margin-bottom: 16px;">02</div>
+                    <div style="font-weight: 600; font-size: 15px; margin-bottom: 8px;">CO₂ Integration</div>
+                </div>
+                <div class="process-step-item">
+                    <div style="font-size: clamp(48px, 6vw, 64px); font-weight: 300; color: #E2E8F0; line-height: 1; margin-bottom: 16px;">03</div>
+                    <div style="font-weight: 600; font-size: 15px; margin-bottom: 8px;">Microalgae</div>
+                </div>
+                <div class="process-step-item">
+                    <div style="font-size: clamp(48px, 6vw, 64px); font-weight: 300; color: #E2E8F0; line-height: 1; margin-bottom: 16px;">04</div>
+                    <div style="font-weight: 600; font-size: 15px; margin-bottom: 8px;">Biomass</div>
+                </div>
+                <div class="process-step-item">
+                    <div style="font-size: clamp(48px, 6vw, 64px); font-weight: 300; color: #E2E8F0; line-height: 1; margin-bottom: 16px;">05</div>
+                    <div style="font-weight: 600; font-size: 15px; margin-bottom: 8px;">Monitoring</div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <div class="footer-links-left">
-                    <a href="#" class="google-logo" aria-label="Google Home">
-                        <img src="/assets/logo_cut.png" alt="" width="150" height="60">
-                    </a>
-                    <nav>
-                        <a href="#about">About KIROS</a>
-                        <a href="#">Privacy</a>
-                        <a href="#">Terms</a>
-                    </nav>
+
+            <div style="text-align: center;">
+                <a href="how-it-works.html" class="nav-btn nav-btn-primary" style="padding: 16px 32px;">Explore How It
+                    Works &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         SECTION: MODULAR BIOREACTOR
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="premium-section" style="padding-top: 80px;">
+        <div class="premium-container">
+            <div class="premium-panel-massive"
+                style="padding: 60px 40px; text-align: center; background: #EDF2F7; border: none;">
+                <div class="glow-effect"></div>
+                <div style="position: relative; z-index: 2;">
+                    <div class="editorial-eyebrow">MODULAR BIOREACTOR</div>
+                    <h2 class="editorial-headline-section">Engineered to Scale.</h2>
+                    <p class="editorial-subtext" style="margin: 24px auto 60px;">KIROS is being developed around modular
+                        cultivation chambers designed to operate as interconnected units. Modular architecture allows
+                        individual systems to be tested, monitored and maintained while providing a pathway toward
+                        larger installations.</p>
+
+                    <div style="position: relative; max-width: 900px; margin: 0 auto 60px;">
+                        <img src="assets/reactor.png" alt="KIROS 330L Modular Bioreactor Prototype"
+                            style="width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 24px; box-shadow: 0 40px 80px rgba(0,0,0,0.15);">
+                    </div>
+
+                    <p class="editorial-subtext" style="margin: -20px auto 40px; font-size: 16px;">Currently testing the
+                        330 L prototype concept.</p>
+
+                    <a href="technology.html" class="nav-btn nav-btn-primary" style="padding: 16px 32px;">Explore
+                        Technology &rarr;</a>
                 </div>
-                <div class="footer-links-right">
-                    <a href="#">Help</a>
-                    <a href="#">Submit feedback</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         SECTION: RESEARCH
+         ═══════════════════════════════════════════════════════════ -->
+    <!-- <section class="premium-section" style="padding-top: 80px;">
+        <div class="premium-container">
+            <div class="premium-panel-light"
+                style="padding: 60px 40px; background: #F7FAFC; border: 1px solid rgba(0,0,0,0.05);">
+                <div class="glow-effect"></div>
+
+                <div style="position: relative; z-index: 2; text-align: center; margin-bottom: 60px;">
+                    <div class="editorial-eyebrow" style="color: #A0AEC0;">RESEARCH & DEVELOPMENT</div>
+                    <h2 class="editorial-headline-section" style="color: #111;">Built Through Research.</h2>
+                    <p class="editorial-subtext" style="color: #4A5568; margin: 24px auto 60px;">KIROS is being
+                        developed through iterative research, engineering design and prototype validation — from
+                        microalgae cultivation and CO₂ utilization to bioreactor architecture, system monitoring and
+                        future industrial integration.</p>
+
+                    <img src="assets/inner/research_hero_1789554449709.jpg" alt="KIROS Microalgae Research Laboratory"
+                        style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
                 </div>
+
+                <div
+                    style="position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 60px;">
+
+                    
+                    <div
+                        style="padding: 32px; background: #FFFFFF; border-radius: 16px; border: 1px solid rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                        <div style="font-family: monospace; font-size: 12px; color: #718096; margin-bottom: 12px;">01
+                            &nbsp; COMPLETED</div>
+                        <h3 style="color: #111; font-size: 20px; font-weight: 500; margin-bottom: 12px;">Concept &
+                            Architecture</h3>
+                        <p style="color: #A0AEC0; font-size: 15px; line-height: 1.6;">Exploring the integration of
+                            renewable energy generation, microalgae cultivation and biological carbon capture into a
+                            modular platform.</p>
+                    </div>
+
+                   
+                    <div
+                        style="padding: 32px; background: #FFFFFF; border-radius: 16px; border: 1px solid rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                        <div style="font-family: monospace; font-size: 12px; color: #718096; margin-bottom: 12px;">02
+                            &nbsp; COMPLETED</div>
+                        <h3 style="color: #111; font-size: 20px; font-weight: 500; margin-bottom: 12px;">Solar Energy
+                            Research</h3>
+                        <p style="color: #A0AEC0; font-size: 15px; line-height: 1.6;">Evaluating solar technologies,
+                            energy generation requirements and system configurations that can support the operation of
+                            the KIROS platform.</p>
+                    </div>
+
+                    <!-- 03 
+                    <div
+                        style="padding: 32px; background: #FFFFFF; border-radius: 16px; border: 1px solid rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                        <div style="font-family: monospace; font-size: 12px; color: #718096; margin-bottom: 12px;">03
+                            &nbsp; COMPLETED</div>
+                        <h3 style="color: #111; font-size: 20px; font-weight: 500; margin-bottom: 12px;">Microalgae
+                            Research</h3>
+                        <p style="color: #A0AEC0; font-size: 15px; line-height: 1.6;">Studying microalgae cultivation,
+                            light availability, nutrient requirements, growth conditions and biological CO₂ utilization.
+                        </p>
+                    </div>
+
+                    <!-- 04 
+                    <div
+                        style="padding: 32px; background: #FFFFFF; border-radius: 16px; border: 1px solid rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                        <div style="font-family: monospace; font-size: 12px; color: #718096; margin-bottom: 12px;">04
+                            &nbsp; COMPLETED</div>
+                        <h3 style="color: #111; font-size: 20px; font-weight: 500; margin-bottom: 12px;">Bioreactor
+                            Design</h3>
+                        <p style="color: #A0AEC0; font-size: 15px; line-height: 1.6;">Developing the modular KIROS
+                            cultivation chamber, including water circulation, CO₂ delivery, mixing, harvesting and
+                            structural considerations.</p>
+                    </div>
+
+                    <!-- 05 
+                    <div
+                        style="padding: 32px; background: #FFFFFF; border-radius: 16px; border: 1px solid rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                        <div style="font-family: monospace; font-size: 12px; color: #718096; margin-bottom: 12px;">05
+                            &nbsp; COMPLETED</div>
+                        <h3 style="color: #111; font-size: 20px; font-weight: 500; margin-bottom: 12px;">Monitoring &
+                            Automation</h3>
+                        <p style="color: #A0AEC0; font-size: 15px; line-height: 1.6;">Designing sensor-based monitoring
+                            for parameters such as temperature, pH, culture conditions, circulation and system
+                            performance.</p>
+                    </div>
+
+                    <!-- 06 CURRENT 
+                    <div
+                        style="padding: 32px; background: #FFFFFF; border-radius: 16px; border: 1px solid #68D391; box-shadow: 0 10px 30px rgba(104, 211, 145, 0.15);">
+                        <div
+                            style="font-family: monospace; font-size: 12px; font-weight: 600; color: #68D391; margin-bottom: 12px;">
+                            06 &nbsp; CURRENT STAGE</div>
+                        <h3 style="color: #111; font-size: 20px; font-weight: 500; margin-bottom: 12px;">Prototype
+                            Validation</h3>
+                        <p style="color: #4A5568; font-size: 15px; line-height: 1.6;">Integrating the individual
+                            subsystems into a working prototype and preparing for controlled cultivation and
+                            system-level validation.</p>
+                    </div>
+
+                    <!-- 07 
+                    <div
+                        style="padding: 32px; background: #FFFFFF; border-radius: 16px; border: 1px dashed rgba(0,0,0,0.15);">
+                        <div style="font-family: monospace; font-size: 12px; color: #718096; margin-bottom: 12px;">07
+                            &nbsp; FUTURE</div>
+                        <h3 style="color: #111; font-size: 20px; font-weight: 500; margin-bottom: 12px;">Pilot Planning
+                        </h3>
+                        <p style="color: #A0AEC0; font-size: 15px; line-height: 1.6;">Future stage focused on
+                            larger-scale system integration, operational testing and evaluation under real-world
+                            conditions.</p>
+                    </div>
+
+                    <!-- 08 
+    <div style="padding: 32px; background: #FFFFFF; border-radius: 16px; border: 1px dashed rgba(0,0,0,0.15);">
+        <div style="font-family: monospace; font-size: 12px; color: #718096; margin-bottom: 12px;">08
+            &nbsp; FUTURE</div>
+        <h3 style="color: #111; font-size: 20px; font-weight: 500; margin-bottom: 12px;">Industrial
+            Validation</h3>
+        <p style="color: #A0AEC0; font-size: 15px; line-height: 1.6;">Long-term objective to evaluate
+            KIROS alongside industrial CO₂ sources and assess technical, operational and economic
+            feasibility.</p>
+    </div>
+
+    </div>
+
+    <div style="position: relative; z-index: 2; text-align: center;">
+        <a href="research.html" class="nav-btn nav-btn-primary" style="padding: 16px 32px;">Explore Research
+            &rarr;</a>
+    </div>
+    </div>
+    </div>
+    </section> -->
+
+    <!-- ═══════════════════════════════════════════════════════════
+         SECTION: APPLICATIONS
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="premium-section" style="padding-top: 80px;">
+        <div class="premium-container">
+            <div style="text-align: center; margin-bottom: 60px;">
+                <div class="editorial-eyebrow">APPLICATIONS</div>
+                <h2 class="editorial-headline-section">Designed for<br>Industrial Environments.</h2>
+            </div>
+
+            <div class="premium-panel-light" style="padding: 20px; border-radius: 40px; background: #F7FAFC;">
+                <img src="assets/wide shot.png" alt="KIROS Industrial Applications"
+                    style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 24px; box-shadow: 0 40px 100px rgba(0,0,0,0.1); margin-bottom: 60px;">
+
+                <div
+                    style="display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-bottom: 60px; padding: 0 40px;">
+                    <span
+                        style="padding: 12px 24px; background: #FFF; border-radius: 100px; font-size: 14px; font-weight: 500; border: 1px solid rgba(0,0,0,0.05);">Thermal
+                        Power</span>
+                    <span
+                        style="padding: 12px 24px; background: #FFF; border-radius: 100px; font-size: 14px; font-weight: 500; border: 1px solid rgba(0,0,0,0.05);">Steel</span>
+                    <span
+                        style="padding: 12px 24px; background: #FFF; border-radius: 100px; font-size: 14px; font-weight: 500; border: 1px solid rgba(0,0,0,0.05);">Cement</span>
+                    <span
+                        style="padding: 12px 24px; background: #FFF; border-radius: 100px; font-size: 14px; font-weight: 500; border: 1px solid rgba(0,0,0,0.05);">Chemical
+                        Processing</span>
+                    <span
+                        style="padding: 12px 24px; background: #FFF; border-radius: 100px; font-size: 14px; font-weight: 500; border: 1px solid rgba(0,0,0,0.05);">Industrial
+                        Wastewater</span>
+                    <span
+                        style="padding: 12px 24px; background: #FFF; border-radius: 100px; font-size: 14px; font-weight: 500; border: 1px solid rgba(0,0,0,0.05);">Future
+                        Urban Infrastructure</span>
+                </div>
+
+                <div style="text-align: center; margin-bottom: 40px;">
+                    <a href="applications.html" class="nav-btn nav-btn-primary" style="padding: 16px 32px;">Explore
+                        Applications &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         SECTION: THE VISION
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="premium-section" style="padding-top: 80px; position: relative; overflow: hidden;">
+        <div class="atmospheric-background">
+            <div class="hero-gradient hero-gradient-top" style="opacity: 0.3;"></div>
+        </div>
+        <div class="premium-container" style="position: relative; z-index: 2; text-align: center;">
+            <div class="editorial-eyebrow">THE VISION</div>
+            <h2 class="editorial-headline-section" style="font-size: 56px;">Building Climate<br>Infrastructure.</h2>
+            <p class="editorial-subtext" style="margin: 24px auto 60px;">KIROS aims to explore infrastructure where
+                renewable energy generation, biological carbon capture and intelligent monitoring can operate as part of
+                an integrated system.</p>
+
+            <div style="text-align: center; margin-bottom: 60px;">
+                <img src="assets/raceway.png" alt="KIROS Future Climate Infrastructure"
+                    style="width: 100%; max-width: 1100px; margin: 0 auto; aspect-ratio: 16/9; object-fit: cover; border-radius: 32px; box-shadow: 0 40px 100px rgba(0,0,0,0.15);">
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         FINAL CTA
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="premium-section" style="padding-top: 80px; padding-bottom: 120px;">
+        <div class="premium-container">
+            <div class="premium-panel-massive"
+                style="text-align: center; padding: 60px 40px; background: linear-gradient(135deg, #f0f4f8 0%, #eef2f6 50%, #e6efe8 100%);">
+                <div class="glow-effect"></div>
+                <div style="position: relative; z-index: 2;">
+                    <h2 class="editorial-headline-section" style="font-size: 48px; margin-bottom: 24px;">Build With
+                        KIROS.</h2>
+                    <p class="editorial-subtext" style="margin: 0 auto 40px;">We are developing the technology,
+                        validating the engineering and exploring partnerships needed to move KIROS from prototype toward
+                        pilot-scale validation.</p>
+                    <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+                        <a href="mailto:aboutkiros@gmail.com?subject=KIROS%20Partnership%20Inquiry" class="nav-btn nav-btn-primary" style="padding: 16px 32px;">Partner
+                            With Us</a>
+                        <a href="about.html#contact" class="nav-btn nav-btn-secondary"
+                            style="padding: 16px 32px;">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container" style="max-width: 1400px; margin: 0 auto; padding: 0 40px;">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="assets/logo_cut.png" alt="KIROS" style="height: 32px; margin-bottom: 24px;">
+                    <p style="font-size: 16px; line-height: 1.6; color: #4A5568; max-width: 400px;">
+                        KIROS is developing integrated climate infrastructure combining renewable energy, microalgae
+                        cultivation and modular engineering for industrial carbon capture applications.
+                    </p>
+                </div>
+
+                <div class="footer-links-group" style="display: flex; flex-direction: column; gap: 16px;">
+                    <h4
+                        style="font-size: 14px; font-weight: 600; color: #111111; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px;">
+                        Navigation</h4>
+                    <a href="technology.html"
+                        style="color: #4A5568; text-decoration: none; font-size: 15px; transition: color 0.3s;">Technology</a>
+                    <a href="how-it-works.html"
+                        style="color: #4A5568; text-decoration: none; font-size: 15px; transition: color 0.3s;">How It
+                        Works</a>
+                    <a href="research.html"
+                        style="color: #4A5568; text-decoration: none; font-size: 15px; transition: color 0.3s;">Research</a>
+                    <a href="applications.html"
+                        style="color: #4A5568; text-decoration: none; font-size: 15px; transition: color 0.3s;">Applications</a>
+                    <a href="about.html"
+                        style="color: #4A5568; text-decoration: none; font-size: 15px; transition: color 0.3s;">About</a>
+                </div>
+
+                <div class="footer-links-group" style="display: flex; flex-direction: column; gap: 16px;">
+                    <h4
+                        style="font-size: 14px; font-weight: 600; color: #111111; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px;">
+                        Connect</h4>
+                    <a href="mailto:aboutkiros@gmail.com?subject=KIROS%20Partnership%20Inquiry" style="color: #4A5568; text-decoration: none; font-size: 15px; transition: color 0.3s;">Partner
+                        With Us</a>
+                    <a href="about.html#contact" style="color: #4A5568; text-decoration: none; font-size: 15px; transition: color 0.3s;">Contact
+                        Us</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom"
+                style="display: flex; justify-content: space-between; align-items: center; padding-top: 40px; border-top: 1px solid rgba(0,0,0,0.1);">
+                <span class="footer-copy" style="color: #718096; font-size: 14px;">&copy; 2026 KIROS. All rights
+                    reserved.</span>
             </div>
         </div>
     </footer>
 
-    <script>
-        // Preloader
-        window.addEventListener('load', () => {
-            const preloader = document.querySelector('.preloader');
-            setTimeout(() => {
-                preloader.classList.add('hidden');
-            }, 1000);
-        });
-
-        // Custom Cursor
-        const cursor = document.querySelector('.custom-cursor');
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = `${e.clientX}px`;
-            cursor.style.top = `${e.clientY}px`;
-        });
-        document.querySelectorAll('a, button, .btn').forEach(el => {
-            el.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
-            el.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
-        });
-
-        // GSAP Scroll Animations
-        gsap.registerPlugin(ScrollTrigger);
-        gsap.utils.toArray('.fade-section').forEach(section => {
-            gsap.fromTo(section, 
-                { opacity: 0, y: 50 },
-                {
-                    opacity: 1,
-                    y: 0,
-                    duration: 1,
-                    ease: 'power2.out',
-                    scrollTrigger: {
-                        trigger: section,
-                        start: 'top 80%',
-                        toggleActions: 'play none none reverse'
-                    }
-                }
-            );
-        });
-
-        gsap.utils.toArray('.fade-in-section').forEach(section => {
-            gsap.fromTo(section, 
-                { opacity: 0, scale: 0.95 },
-                {
-                    opacity: 1,
-                    scale: 1,
-                    duration: 1.2,
-                    ease: 'power3.out',
-                    scrollTrigger: {
-                        trigger: section,
-                        start: 'top 85%',
-                        toggleActions: 'play none none reverse'
-                    }
-                }
-            );
-        });
-
-        // Parallax Effect (only for main-image-container)
-        gsap.utils.toArray('.parallax').forEach(container => {
-            const img = container.querySelector('img');
-            gsap.to(img, {
-                yPercent: 20,
-                ease: 'none',
-                scrollTrigger: {
-                    trigger: container,
-                    scrub: true,
-                    start: 'top bottom',
-                    end: 'bottom top'
-                }
-            });
-        });
-
-const impactSection = document.querySelector('.impact-section');
-
-gsap.utils.toArray('.impact-number').forEach(numberEl => {
-    let hasAnimated = false; // Local flag per element
-    ScrollTrigger.create({
-        trigger: impactSection,
-        start: 'top 70%',
-        onEnter: () => {
-            if (!hasAnimated) {
-                const target = parseInt(numberEl.getAttribute('data-target'), 10);
-                gsap.to(numberEl, {
-                    innerText: target,
-                    duration: 2,
-                    snap: { innerText: 1 },
-                    ease: 'power1.out',
-                    onUpdate: function() {
-                        numberEl.textContent = Math.floor(this.targets()[0].innerText).toLocaleString();
-                    }
-                });
-                hasAnimated = true; // Set flag after animation starts
-            }
-        }
-    });
-});
-        // Initialize Vanilla Tilt
-        VanillaTilt.init(document.querySelectorAll('[data-tilt]'), {
-            max: 10,
-            speed: 400,
-            perspective: 1000,
-            glare: true,
-            'max-glare': 0.2
-        });
-    </script>
+    <script src="app.js?v=1.2"></script>
 </body>
-</html>
 
+</html>

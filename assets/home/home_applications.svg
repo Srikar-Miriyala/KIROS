@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+    <defs>
+        <linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#E2E8F0" />
+            <stop offset="100%" stop-color="#FFFFFF" />
+        </linearGradient>
+        <linearGradient id="fog" x1="0%" y1="100%" x2="0%" y2="0%">
+            <stop offset="0%" stop-color="#FFFFFF" stop-opacity="1"/>
+            <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+        </linearGradient>
+        <filter id="heavy-fog">
+            <feGaussianBlur stdDeviation="40" />
+        </filter>
+        <filter id="light-fog">
+            <feGaussianBlur stdDeviation="10" />
+        </filter>
+    </defs>
+    
+    <rect width="100%" height="100%" fill="url(#sky)" />
+    
+    <!-- Background Industrial Blocks -->
+    <g fill="#A0AEC0" filter="url(#heavy-fog)" opacity="0.5">
+        <rect x="200" y="400" width="300" height="800" />
+        <rect x="1400" y="300" width="400" height="900" />
+        <rect x="800" y="200" width="200" height="1000" />
+    </g>
+    
+    <!-- Midground Blocks -->
+    <g fill="#CBD5E0" filter="url(#light-fog)">
+        <rect x="400" y="500" width="400" height="700" />
+        <rect x="1100" y="450" width="350" height="750" />
+    </g>
+    
+    <!-- Foreground Carbon Capture Integration (Clean, Geometric, Green accents) -->
+    <g fill="#F7FAFC">
+        <rect x="650" y="650" width="600" height="450" rx="20" />
+        <rect x="680" y="700" width="150" height="400" rx="10" fill="#EDF2F7" />
+        <rect x="870" y="700" width="150" height="400" rx="10" fill="#EDF2F7" />
+        <rect x="1060" y="700" width="150" height="400" rx="10" fill="#EDF2F7" />
+    </g>
+    
+    <!-- Glowing green integration nodes -->
+    <g fill="#48BB78">
+        <rect x="730" y="630" width="50" height="10" rx="5" />
+        <rect x="920" y="630" width="50" height="10" rx="5" />
+        <rect x="1110" y="630" width="50" height="10" rx="5" />
+    </g>
+    
+    <!-- Fog layer overlay -->
+    <rect width="100%" height="100%" fill="url(#fog)" opacity="0.8" />
+    
+    <!-- Sunlight -->
+    <circle cx="300" cy="200" r="150" fill="#FFFFFF" filter="url(#heavy-fog)" opacity="0.9" />
+</svg>
